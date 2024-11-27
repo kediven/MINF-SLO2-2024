@@ -139,6 +139,9 @@ void APP_Initialize ( void )
     See prototype in app.h.
  */
 
+
+// Fonction principale pour l'appel des fonctions du programme
+
 void APP_Tasks ( void )
 {
     /* Check the application's current state. */
@@ -147,10 +150,11 @@ void APP_Tasks ( void )
         /* Application's initial state. */
         case APP_STATE_INIT:
         {
-            Initialisation();   //Initialisation des périphériques
-            AllumerLEDS();  //Allumage des LEDs
             DRV_TMR0_Start(); //Démarrage du timer
-            appData.state = APP_STATE_WAIT;
+            Initialisation(); //Initialisation des périfériques
+            AllumerLEDS();  //Allumage des LEDs
+            APP_UpdateState(APP_STATE_WAIT);
+            
             break;
         }
         case APP_STATE_WAIT:
@@ -161,9 +165,9 @@ void APP_Tasks ( void )
 
         case APP_STATE_SERVICE_TASKS:
         {
-          AffichageLCD();    //Lecture et affichage de la valeur de l'ADC
-            Chenillard();               //Appel de la fonction Chenillard
-            appData.state = APP_STATE_WAIT; //Mise à jour de la machine d'état
+            AffichageLCD();    //Lecture et affichage de la valeur de l'ADC
+            Chenillard();      //Appel de la fonction Chenillard
+            APP_UpdateState(APP_STATE_WAIT); //Change dans l'état WAIT à la fin
             break;
         }
 
@@ -181,15 +185,16 @@ void APP_Tasks ( void )
 
 void APP_Timer1CallBack(void)
 {
-    static char i=0;
-    if(i>=30)
+    static uint8_t counter = 0; // Compteur pour les interruptions
+
+    counter++; // Incrémente le compteur à chaque interruption (100 ms)
+
+    if (counter >= 29) // Après 30 interruptions (3 secondes)
     {
-        APP_UpdateState(APP_STATE_SERVICE_TASKS);
-        i =29;
+        APP_UpdateState(APP_STATE_SERVICE_TASKS); // Va dans case tasks
     }
-    i++;
-    
 }
+
 void APP_UpdateState(APP_STATES newState)
 {
     appData.state = newState;

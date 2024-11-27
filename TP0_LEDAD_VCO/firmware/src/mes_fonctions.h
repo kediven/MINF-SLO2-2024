@@ -10,8 +10,7 @@
 #define	MES_FONCTIONS_H
 
 #include "app.h"
-//Prototype des fonctions
-    
+//Prototype des fonctions utilisées  
 void Initialisation (void);
 void AffichageLCD ();
 void AllumerLEDS(void);
