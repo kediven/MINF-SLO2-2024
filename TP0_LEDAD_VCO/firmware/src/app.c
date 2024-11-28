@@ -189,9 +189,10 @@ void APP_Timer1CallBack(void)
 
     counter++; // Incrémente le compteur à chaque interruption (100 ms)
 
-    if (counter >= 29) // Après 30 interruptions (3 secondes)
+    if (counter >= 30) // Après 30 interruptions (3 secondes)
     {
         APP_UpdateState(APP_STATE_SERVICE_TASKS); // Va dans case tasks
+        counter = 29; // Remets le counter à 29
     }
 }
 
