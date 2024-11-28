@@ -61,7 +61,7 @@ void Initialisation(void)
 {
     lcd_init(); // Initialise l'écran LCD
     lcd_gotoxy(1, 1); // Positionne le curseur à la ligne 1, colonne 1
-    printf_lcd("Tp0 Led+AD 2024"); // Affiche un titre sur la ligne 1
+    printf_lcd("TP0 Led+AD 2024"); // Affiche un titre sur la ligne 1
     lcd_gotoxy(1, 2); // Positionne le curseur à la ligne 2, colonne 1
     printf_lcd("Vitor Coelho"); // Affiche le nom de l'auteur sur la ligne 2
     lcd_bl_on(); // Active le rétroéclairage de l'écran LCD
@@ -85,36 +85,48 @@ void Initialisation(void)
 
 void Chenillard(void)
 {
-    static uint8_t current_led = 0;     // Indice de la LED actuellement allumée
-    static uint8_t compteurEteint = 0; // Compteur pour gérer l'initialisation
+    static uint8_t current_led = 0; // Compteur pour suivre quelle LED doit s'allumer
 
-    if (compteurEteint == 0)
+    // Éteindre toutes les LEDs
+    EteindreLEDS();
+
+    // Utiliser un switch pour allumer une LED spécifique en fonction du compteur
+    switch (current_led)
     {
-        EteindreLEDS(); // Éteint toutes les LEDs au "démarrage"
-        compteurEteint++;
+        case 0:
+            BSP_LEDOn(BSP_LED_0);
+            break;
+        case 1:
+            BSP_LEDOn(BSP_LED_1);
+            break;
+        case 2:
+            BSP_LEDOn(BSP_LED_2);
+            break;
+        case 3:
+            BSP_LEDOn(BSP_LED_3);
+            break;
+        case 4:
+            BSP_LEDOn(BSP_LED_4);
+            break;
+        case 5:
+            BSP_LEDOn(BSP_LED_5);
+            break;
+        case 6:
+            BSP_LEDOn(BSP_LED_6);
+            break;
+        case 7:
+            BSP_LEDOn(BSP_LED_7);
+            break;
     }
 
-    // Tableau contenant les LEDs dans l'ordre
-    BSP_LED leds[] = 
-    {
-        BSP_LED_0,
-        BSP_LED_1,
-        BSP_LED_2,
-        BSP_LED_3,
-        BSP_LED_4,
-        BSP_LED_5,
-        BSP_LED_6,
-        BSP_LED_7
-    };
-
-    // Éteindre la LED précédente
-    BSP_LEDOff(leds[(current_led == 0 ? 7 : current_led - 1)]);
-
-    // Allumer la LED actuelle
-    BSP_LEDOn(leds[current_led]);
-
     // Passer à la LED suivante
-    current_led = (current_led + 1) % 8; // Boucle entre les indices 0 à 7
+    current_led++;
+
+    // Revenir à la première LED après la dernière
+    if (current_led > 7)
+    {
+        current_led = 0;
+    }
 }
 
 /*
