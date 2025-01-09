@@ -42,7 +42,7 @@ SUBSTITUTE GOODS, TECHNOLOGY, SERVICES, OR ANY CLAIMS BY THIRD PARTIES
 (INCLUDING BUT NOT LIMITED TO ANY DEFENSE THEREOF), OR OTHER SIMILAR COSTS.
  *******************************************************************************/
 //DOM-IGNORE-END
-#include "Mc32DriverAdc.h"
+
 #ifndef _APP_H
 #define _APP_H
 
@@ -52,12 +52,11 @@ SUBSTITUTE GOODS, TECHNOLOGY, SERVICES, OR ANY CLAIMS BY THIRD PARTIES
 // *****************************************************************************
 // *****************************************************************************
 
-#include <stdint.h>
-#include <stdbool.h>
 #include <stddef.h>
 #include <stdlib.h>
 #include "system_config.h"
 #include "system_definitions.h"
+#include "Mc32DriverAdc.h"
 
 // DOM-IGNORE-BEGIN
 #ifdef __cplusplus  // Provide C++ Compatibility
@@ -89,7 +88,7 @@ typedef enum
 	/* Application's state machine's initial state. */
 	APP_STATE_INIT=0,
 	APP_STATE_SERVICE_TASKS = 1,
-    APP_STATE_WAIT
+    	APP_STATE_WAIT = 2
 
 	/* TODO: Define states used by the application state machine. */
 
@@ -164,8 +163,10 @@ typedef struct
     This routine must be called from the SYS_Initialize function.
 */
 
+// Prototype de fonctions
 void APP_Initialize ( void );
 void APP_UpdateState ( APP_STATES NewState );
+void APP_Timer1CallBack(void);  
 
 /*******************************************************************************
   Function:
