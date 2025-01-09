@@ -183,6 +183,13 @@ void APP_Tasks ( void )
     }
 }
 
+/*
+*  Fonction : void APP_Timer1CallBack(void)
+*  Description :
+*  Elle est appelée automatiquement à chaque interruption
+*  générée par Timer1 (toutes les 100 ms).
+*  Son objectif est de compter les interruptions et d'effectuer 
+*  une action spécifique après  3 secondes (30 interruptions).*/
 void APP_Timer1CallBack(void)
 {
     static uint8_t counter = 0; // Compteur pour les interruptions
@@ -192,15 +199,15 @@ void APP_Timer1CallBack(void)
     if (counter >= 30) // Après 30 interruptions (3 secondes)
     {
         APP_UpdateState(APP_STATE_SERVICE_TASKS); // Va dans case tasks
-        counter = 29; // Remets le counter à 29
+        counter = 0; // Remets le counter à 0
     }
 }
+
 /*
 *  Fonction : void APP_UpdateState(APP_STATES newState)
 *  Description :
 *  Cette fonction permet de contrôler les transitions
 *  entre les différents états de APP_STATES.*/
-
 void APP_UpdateState(APP_STATES newState)
 {
     appData.state = newState;
