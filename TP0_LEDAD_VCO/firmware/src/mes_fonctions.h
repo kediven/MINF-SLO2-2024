@@ -2,7 +2,7 @@
  * Nom du Projet       : [TP0]
  * Nom du Fichier      : [mesfonctions].h
  * Auteur              : [Vitor Coelho]
- * Date de CrÈation    : [19.11.2024]]
+ * Date de Cr√©ation    : [19.11.2024]]
  * Version             : [0.0]
  *******************************************************************************/
 
@@ -10,12 +10,16 @@
 #define	MES_FONCTIONS_H
 
 #include "app.h"
-//Prototype des fonctions utilisÈes  
+//Prototype des fonctions utilis√©es  
 void Initialisation (void);
 void AffichageLCD ();
 void AllumerLEDS(void);
 void EteindreLEDS(void);
 void Chenillard(void);
+
+//Constantes num√©riques
+#define VRAI 1 
+#define FAUX 0
 
 
 #ifdef	__cplusplus
