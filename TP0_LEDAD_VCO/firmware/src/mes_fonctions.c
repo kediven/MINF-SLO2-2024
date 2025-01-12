@@ -127,7 +127,7 @@ void Chenillard(void)
             break;
     }
     // Passer à la prochaine LED
-    current_led = (current_led + 1) % 8;
+    current_led = (current_led + 1) % NBLEDS;
 }
 
 /*
