@@ -168,6 +168,9 @@ void APP_Initialize ( void );
 void APP_UpdateState ( APP_STATES NewState );
 void APP_Timer1CallBack(void);  
 
+// Constantes numériques
+#define _3SEC 30
+
 /*******************************************************************************
   Function:
     void APP_Tasks ( void )
