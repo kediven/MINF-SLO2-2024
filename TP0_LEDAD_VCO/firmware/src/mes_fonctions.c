@@ -7,7 +7,7 @@
  *******************************************************************************/
 
 #include "mes_fonctions.h"
-APP_DATA appData;
+extern APP_DATA appData;
 
 
 /* 
@@ -85,14 +85,14 @@ void Initialisation(void)
 
 void Chenillard(void)
 {
-    static bool firstRun = true; // Indicateur pour la première exécution
+    static bool firstRun = VRAI; // Indicateur pour la première exécution
     static uint8_t current_led = 0; // Compteur pour suivre quelle LED doit s'allumer
     
     // Première éxécution du programme
-    if (firstRun)
+    if (firstRun == VRAI)
     {
     EteindreLEDS();
-    firstRun = false; 
+    firstRun = FALSE; 
     }
     
     // Éteindre seulement la LED précédente
