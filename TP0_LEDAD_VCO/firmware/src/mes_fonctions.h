@@ -20,6 +20,7 @@ void Chenillard(void);
 //Constantes numériques
 #define VRAI 1 
 #define FAUX 0
+#defien NBLEDS 8
 
 
 #ifdef	__cplusplus
