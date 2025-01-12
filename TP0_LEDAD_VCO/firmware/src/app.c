@@ -57,7 +57,7 @@ SUBSTITUTE GOODS, TECHNOLOGY, SERVICES, OR ANY CLAIMS BY THIRD PARTIES
 #include <stdbool.h>
 #include <stddef.h>
 #include <stdlib.h>
-// Librairies dÈdiÈes ‡ TP0
+// Librairies d√©di√©es √† TP0
 #include "app.h"
 #include "mes_fonctions.h"
 #include "Mc32DriverLcd.h"
@@ -150,8 +150,8 @@ void APP_Tasks ( void )
         /* Application's initial state. */
         case APP_STATE_INIT:
         {
-            DRV_TMR0_Start(); //DÈmarrage du timer
-            Initialisation(); //Initialisation des pÈrifÈriques
+            DRV_TMR0_Start(); //D√©marrage du timer
+            Initialisation(); //Initialisation des p√©rif√©riques
             AllumerLEDS();  //Allumage des LEDs
             APP_UpdateState(APP_STATE_WAIT);
             
@@ -167,7 +167,7 @@ void APP_Tasks ( void )
         {
             AffichageLCD();    //Lecture et affichage de la valeur de l'ADC
             Chenillard();      //Appel de la fonction Chenillard
-            APP_UpdateState(APP_STATE_WAIT); //Change dans l'Ètat WAIT ‡ la fin
+            APP_UpdateState(APP_STATE_WAIT); //Change dans l'√©tat WAIT √† la fin
             break;
         }
 
@@ -183,19 +183,31 @@ void APP_Tasks ( void )
     }
 }
 
+/*
+*  Fonction : void APP_Timer1CallBack(void)
+*  Description :
+*  Elle est appel√©e automatiquement √† chaque interruption
+*  g√©n√©r√©e par Timer1 (toutes les 100 ms).
+*  Son objectif est de compter les interruptions et d'effectuer 
+*  une action sp√©cifique apr√®s  3 secondes (30 interruptions).*/
 void APP_Timer1CallBack(void)
 {
     static uint8_t counter = 0; // Compteur pour les interruptions
 
-    counter++; // IncrÈmente le compteur ‡ chaque interruption (100 ms)
+    counter++; // Incr√©mente le compteur √† chaque interruption (100 ms)
 
-    if (counter >= 30) // AprËs 30 interruptions (3 secondes)
+    if (counter >= _3SEC) // Apr√®s 30 interruptions (3 secondes)
     {
         APP_UpdateState(APP_STATE_SERVICE_TASKS); // Va dans case tasks
-        counter = 29; // Remets le counter ‡ 29
+        counter = 0; // Remets le counter √† 0
     }
 }
 
+/*
+*  Fonction : void APP_UpdateState(APP_STATES newState)
+*  Description :
+*  Cette fonction permet de contr√¥ler les transitions
+*  entre les diff√©rents √©tats de APP_STATES.*/
 void APP_UpdateState(APP_STATES newState)
 {
     appData.state = newState;

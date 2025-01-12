@@ -2,36 +2,36 @@
  * Nom du Projet       : [TP0]
  * Nom du Fichier      : [mesfonctions].c
  * Auteur              : [Vitor Coelho]
- * Date de Création    : [19.11.2024]]
+ * Date de CrÃ©ation    : [19.11.2024]]
  * Version             : [0.0]
  *******************************************************************************/
 
 #include "mes_fonctions.h"
-APP_DATA appData;
+extern APP_DATA appData;
 
 
 /* 
  * Fonction : void EteindreLEDS(void)
  * Description :
- * Cette fonction éteint toutes les LEDs connectées au microcontrôleur. 
+ * Cette fonction Ã©teint toutes les LEDs connectÃ©es au microcontrÃ´leur. 
  * Elle utilise la fonction `BSP_LEDOff` pour chaque LED individuelle.
  */
 void EteindreLEDS(void)
 {
-    BSP_LEDOff(BSP_LED_0); // Éteint la LED 0
-    BSP_LEDOff(BSP_LED_1); // Éteint la LED 1
-    BSP_LEDOff(BSP_LED_2); // Éteint la LED 2
-    BSP_LEDOff(BSP_LED_3); // Éteint la LED 3
-    BSP_LEDOff(BSP_LED_4); // Éteint la LED 4
-    BSP_LEDOff(BSP_LED_5); // Éteint la LED 5
-    BSP_LEDOff(BSP_LED_6); // Éteint la LED 6
-    BSP_LEDOff(BSP_LED_7); // Éteint la LED 7
+    BSP_LEDOff(BSP_LED_0); // Ã‰teint la LED 0
+    BSP_LEDOff(BSP_LED_1); // Ã‰teint la LED 1
+    BSP_LEDOff(BSP_LED_2); // Ã‰teint la LED 2
+    BSP_LEDOff(BSP_LED_3); // Ã‰teint la LED 3
+    BSP_LEDOff(BSP_LED_4); // Ã‰teint la LED 4
+    BSP_LEDOff(BSP_LED_5); // Ã‰teint la LED 5
+    BSP_LEDOff(BSP_LED_6); // Ã‰teint la LED 6
+    BSP_LEDOff(BSP_LED_7); // Ã‰teint la LED 7
 }
 
 /* 
  * Fonction : void AllumerLEDS(void)
  * Description :
- * Cette fonction allume toutes les LEDs connectées au microcontrôleur. 
+ * Cette fonction allume toutes les LEDs connectÃ©es au microcontrÃ´leur. 
  * Elle utilise la fonction `BSP_LEDOn` pour chaque LED individuelle.
  */
 
@@ -50,21 +50,21 @@ void AllumerLEDS(void)
 /* 
  * Fonction : void Initialisation(void)
  * Description :
- * Cette fonction initialise les périphériques utilisés dans le projet :
- * - L'écran LCD pour l'affichage.
- * - Le rétroéclairage de l'écran.
+ * Cette fonction initialise les pÃ©riphÃ©riques utilisÃ©s dans le projet :
+ * - L'Ã©cran LCD pour l'affichage.
+ * - Le rÃ©troÃ©clairage de l'Ã©cran.
  * - Le convertisseur (ADC).
- * Elle affiche également un message d'accueil sur le LCD.
+ * Elle affiche Ã©galement un message d'accueil sur le LCD.
  */
 
 void Initialisation(void)
 {
-    lcd_init(); // Initialise l'écran LCD
-    lcd_gotoxy(1, 1); // Positionne le curseur à la ligne 1, colonne 1
+    lcd_init(); // Initialise l'Ã©cran LCD
+    lcd_gotoxy(1, 1); // Positionne le curseur Ã  la ligne 1, colonne 1
     printf_lcd("TP0 Led+AD 2024"); // Affiche un titre sur la ligne 1
-    lcd_gotoxy(1, 2); // Positionne le curseur à la ligne 2, colonne 1
+    lcd_gotoxy(1, 2); // Positionne le curseur Ã  la ligne 2, colonne 1
     printf_lcd("Vitor Coelho"); // Affiche le nom de l'auteur sur la ligne 2
-    lcd_bl_on(); // Active le rétroéclairage de l'écran LCD
+    lcd_bl_on(); // Active le rÃ©troÃ©clairage de l'Ã©cran LCD
     BSP_InitADC10(); // Initialise les convertisseurs ADC
 }
 
@@ -78,19 +78,27 @@ void Initialisation(void)
 /*
  * Fonction : void Chenillard(void)
  * Description :
- * Cette fonction implémente un effet chenillard sur les LEDs.
- * Les LEDs s?allument et s?éteignent successivement dans un ordre cyclique de
- * LED0 à LED7
+ * Cette fonction implÃ©mente un effet chenillard sur les LEDs.
+ * Les LEDs s?allument et s?Ã©teignent successivement dans un ordre cyclique de
+ * LED0 Ã  LED7
  */
 
 void Chenillard(void)
 {
+    static bool firstRun = VRAI; // Indicateur pour la premiÃ¨re exÃ©cution
     static uint8_t current_led = 0; // Compteur pour suivre quelle LED doit s'allumer
-
-    // Éteindre toutes les LEDs
+    
+    // PremiÃ¨re Ã©xÃ©cution du programme
+    if (firstRun == VRAI)
+    {
     EteindreLEDS();
-
-    // Utiliser un switch pour allumer une LED spécifique en fonction du compteur
+    firstRun = FALSE; 
+    }
+    
+    // Ã‰teindre seulement la LED prÃ©cÃ©dente
+    BSP_LEDOff(current_led == 0 ? BSP_LED_7 : current_led - 1);
+    
+    // Allumer la LED qu'ilm faut
     switch (current_led)
     {
         case 0:
@@ -118,29 +126,22 @@ void Chenillard(void)
             BSP_LEDOn(BSP_LED_7);
             break;
     }
-
-    // Passer à la LED suivante
-    current_led++;
-
-    // Revenir à la première LED après la dernière
-    if (current_led > 7)
-    {
-        current_led = 0;
-    }
+    // Passer Ã  la prochaine LED
+    current_led = (current_led + 1) % NBLEDS;
 }
 
 /*
  * Fonction : void AffichageLCD(void)
  * Description :
- * Cette fonction lit les valeurs des canaux ADC et les affiche sur l'écran LCD.
+ * Cette fonction lit les valeurs des canaux ADC et les affiche sur l'Ã©cran LCD.
  * Elle affiche deux valeurs (canaux 0 et 1) sur la ligne 3 du LCD.
  */
 void AffichageLCD(void)
 {
     appData.AdcRes = BSP_ReadAllADC(); // Lit toutes les valeurs des ADC
-    lcd_gotoxy(1, 3); // Positionne le curseur à la ligne 3, colonne 1
+    lcd_gotoxy(1, 3); // Positionne le curseur Ã  la ligne 3, colonne 1
     printf_lcd("Ch0: %4d", appData.AdcRes.Chan0); // Affiche la valeur du canal 0
-    lcd_gotoxy(11, 3); // Positionne le curseur à la ligne 3, colonne 11
+    lcd_gotoxy(11, 3); // Positionne le curseur Ã  la ligne 3, colonne 11
     printf_lcd("Ch1: %4d", appData.AdcRes.Chan1); // Affiche la valeur du canal 1
 }
 
