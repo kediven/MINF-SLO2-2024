@@ -73,7 +73,13 @@ SUBSTITUTE GOODS, TECHNOLOGY, SERVICES, OR ANY CLAIMS BY THIRD PARTIES
 
 void __ISR(_TIMER_1_VECTOR, ipl3AUTO) IntHandlerDrvTmrInstance0(void)
 {
+    /* Cette fonction, `APP_Timer1CallBack`, est utilisée pour exécuter des traitements cycliques
+       configurés pour se produire toutes les 100 ms.*/
     APP_Timer1CallBack();
+ 
+    /* Cette fonction indique que l'interruption a été correctement traitée.
+       Cela évite que la même interruption soit immédiatement redéclenchée,
+       permettant au Timer1 de continuer à fonctionner comme il faut.*/
     PLIB_INT_SourceFlagClear(INT_ID_0,INT_SOURCE_TIMER_1);
     
 
