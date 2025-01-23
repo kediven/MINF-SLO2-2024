@@ -19,7 +19,12 @@
                 <sourceRootElem>..\src</sourceRootElem>
                 <sourceRootElem>..\src\default</sourceRootElem>
                 <sourceRootElem>..\src\system_config\default</sourceRootElem>
+<<<<<<< HEAD
                 <sourceRootElem>../../../../../..</sourceRootElem>
+=======
+                <sourceRootElem>../../../../../../../../../../Users/vitgoncalves/OneDrive - Education Vaud/ETML-ES/MINF/TP/Pratique_TP/TP2_PwmRs232/Fichiers_TP2/Base_TP2_PwmRs232</sourceRootElem>
+                <sourceRootElem>../../../../..</sourceRootElem>
+>>>>>>> b12139c619f81a68ceeebf0d4749fe3f592ac829
             </sourceRootList>
             <confList>
                 <confElem>
