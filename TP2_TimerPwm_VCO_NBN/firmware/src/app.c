@@ -87,7 +87,7 @@ SUBSTITUTE GOODS, TECHNOLOGY, SERVICES, OR ANY CLAIMS BY THIRD PARTIES
     
     Application strings and buffers are be defined outside this structure.
 */
-
+variable vitor;
 APP_DATA appData;
 S_pwmSettings pData;
 
