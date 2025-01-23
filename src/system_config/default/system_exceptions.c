@@ -1,20 +1,24 @@
 /*******************************************************************************
-  System Definitions
+  MPLAB Harmony Exceptions Source File
 
   File Name:
-    system_definitions.h
+    system_exceptions.c
 
   Summary:
-    MPLAB Harmony project system definitions.
+    This file contains a function which overrides the deafult _weak_ exception
+    handler provided by the XC32 compiler.
 
   Description:
-    This file contains the system-wide prototypes and definitions for an MPLAB
-    Harmony project.
+    This file redefines the default _weak_  exception handler with a more debug
+    friendly one. If an unexpected exception occurs the code will stop in a
+    while(1) loop.  The debugger can be halted and two variables _excep_code and
+    _except_addr can be examined to determine the cause and address where the
+    exception occured.
  *******************************************************************************/
 
-//DOM-IGNORE-BEGIN
+// DOM-IGNORE-BEGIN
 /*******************************************************************************
-Copyright (c) 2013-2014 released Microchip Technology Inc.  All rights reserved.
+Copyright (c) 2013-2017 released Microchip Technology Inc.  All rights reserved.
 
 Microchip licenses to you the right to use, modify, copy and distribute
 Software only when embedded on a Microchip microcontroller or digital signal
@@ -35,83 +39,75 @@ CONSEQUENTIAL DAMAGES, LOST PROFITS OR LOST DATA, COST OF PROCUREMENT OF
 SUBSTITUTE GOODS, TECHNOLOGY, SERVICES, OR ANY CLAIMS BY THIRD PARTIES
 (INCLUDING BUT NOT LIMITED TO ANY DEFENSE THEREOF), OR OTHER SIMILAR COSTS.
  *******************************************************************************/
-//DOM-IGNORE-END
-#ifndef _SYS_DEFINITIONS_H
-#define _SYS_DEFINITIONS_H
-
-// *****************************************************************************
-// *****************************************************************************
-// Section: Included Files
-// *****************************************************************************
-// *****************************************************************************
-#include <stdint.h>
-#include <stddef.h>
-#include <stdbool.h>
-#include "system/common/sys_common.h"
-#include "system/common/sys_module.h"
-#include "system/devcon/sys_devcon.h"
-#include "system/clk/sys_clk.h"
-#include "system/int/sys_int.h"
-#include "driver/tmr/drv_tmr_static.h"
-#include "peripheral/int/plib_int.h"
-#include "driver/usart/drv_usart_static.h"
-#include "system/ports/sys_ports.h"
-#include "app.h"
-
-
-// DOM-IGNORE-BEGIN
-#ifdef __cplusplus  // Provide C++ Compatibility
-
-extern "C" {
-
-#endif
 // DOM-IGNORE-END
 
+
+#include <xc.h>                 /* Defines special function registers, CP0 regs  */
+#include "system_config.h"
+#include "system_definitions.h"
+#include "system/debug/sys_debug.h"
+
+
 // *****************************************************************************
 // *****************************************************************************
-// Section: Type Definitions
+// Section: Global Data Definitions
 // *****************************************************************************
 // *****************************************************************************
 
-// *****************************************************************************
-/* System Objects
+/*******************************************************************************
+  Exception Reason Data
 
-  Summary:
-    Structure holding the system's object handles
-
-  Description:
-    This structure contains the object handles for all objects in the
-    MPLAB Harmony project's system configuration.
+  <editor-fold defaultstate="expanded" desc="Exception Reason Data">
 
   Remarks:
-    These handles are returned from the "Initialize" functions for each module
-    and must be passed into the "Tasks" function for each module.
+    These global static items are used instead of local variables in the
+    _general_exception_handler function because the stack may not be available
+    if an exception has occured.
 */
 
-typedef struct
+/* Code identifying the cause of the exception (CP0 Cause register). */
+static unsigned int _excep_code;
+
+/* Address of instruction that caused the exception. */
+static unsigned int _excep_addr;
+
+// </editor-fold>
+
+
+// *****************************************************************************
+// *****************************************************************************
+// Section: Exception Handling
+// *****************************************************************************
+// *****************************************************************************
+
+/*******************************************************************************
+  Function:
+    void _general_exception_handler ( void )
+
+  Summary:
+    Overrides the XC32 _weak_ _generic_exception_handler.
+
+  Description:
+    This function overrides the XC32 default _weak_ _generic_exception_handler.
+
+  Remarks:
+    Refer to the XC32 User's Guide for additional information.
+ */
+
+
+void _general_exception_handler ( void )
 {
-    SYS_MODULE_OBJ  drvTmr0;
+    /* Mask off Mask of the ExcCode Field from the Cause Register
+    Refer to the MIPs Software User's manual */
+    _excep_code = (_CP0_GET_CAUSE() & 0x0000007C) >> 2;
+    _excep_addr = _CP0_GET_EPC();
 
-    SYS_MODULE_OBJ  drvUsart0;
-
-} SYSTEM_OBJECTS;
-
-// *****************************************************************************
-// *****************************************************************************
-// Section: extern declarations
-// *****************************************************************************
-// *****************************************************************************
-
-extern SYSTEM_OBJECTS sysObj;
-
-//DOM-IGNORE-BEGIN
-#ifdef __cplusplus
+    while (1)
+    {
+        SYS_DEBUG_BreakPoint();
+    }
 }
-#endif
-//DOM-IGNORE-END
 
-#endif /* _SYS_DEFINITIONS_H */
 /*******************************************************************************
  End of File
 */
-
