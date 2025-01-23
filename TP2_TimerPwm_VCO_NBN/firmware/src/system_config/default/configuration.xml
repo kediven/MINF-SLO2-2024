@@ -5,7 +5,7 @@
     <SystemStartScript dnOrder="1"/>
   </DisplayManager>
   <General>
-    <HarmonyPath dnOrder="0" path="../../../.."/>
+    <HarmonyPath dnOrder="0" path="../../../../../.."/>
     <Processor dnOrder="1" name="PIC32MX795F512L"/>
     <Board dnOrder="2" name=" "/>
     <ForceOptimization dnOrder="3" flag="false"/>
@@ -258,7 +258,7 @@
         <Name dnOrder="0">system_interrupt.c</Name>
         <Path dnOrder="1">Source&amp;#160;Files/app/system_config/default</Path>
         <Checksum dnOrder="2">1216398F7D468FA1630EB867904772E2</Checksum>
-        <ProjectFileChecksum dnOrder="3">FC877B122116750A01A407CA23B60EC2</ProjectFileChecksum>
+        <ProjectFileChecksum dnOrder="3">11C98ACD7CA23618A00AF4744EBEB6B8</ProjectFileChecksum>
       </Template>
       <Template dnOrder="19">
         <Name dnOrder="0">drv_oc_mapping.c</Name>
@@ -273,16 +273,16 @@
     </Templates>
     <CompilerItems dnOrder="2">
       <C32 dnOrder="0">
-        <Include dnOrder="0" value="C:\microchip\harmony\v2_06\apps\TP_ACTIF\TP1\TP1_TimerPwm_VCO_LMS\firmware\src"/>
-        <Include dnOrder="1" value="C:\microchip\harmony\v2_06\apps\TP_ACTIF\TP1\TP1_TimerPwm_VCO_LMS\firmware\src\system_config\default"/>
-        <Include dnOrder="2" value="C:\microchip\harmony\v2_06\apps\TP_ACTIF\TP1\TP1_TimerPwm_VCO_LMS\firmware\src\default"/>
+        <Include dnOrder="0" value="C:\microchip\harmony\v2_06\apps\MINF\TP\TP2\MINF-SLO2-2024\TP2_TimerPwm_VCO_NBN\firmware\src"/>
+        <Include dnOrder="1" value="C:\microchip\harmony\v2_06\apps\MINF\TP\TP2\MINF-SLO2-2024\TP2_TimerPwm_VCO_NBN\firmware\src\system_config\default"/>
+        <Include dnOrder="2" value="C:\microchip\harmony\v2_06\apps\MINF\TP\TP2\MINF-SLO2-2024\TP2_TimerPwm_VCO_NBN\firmware\src\default"/>
         <Include dnOrder="3" value="C:\microchip\harmony\v2_06\framework"/>
-        <Include dnOrder="4" value="C:\microchip\harmony\v2_06\apps\TP_ACTIF\TP1\TP1_TimerPwm_VCO_LMS\firmware\src\system_config\default\framework"/>
-        <Include dnOrder="5" value="../../../../../../bsp/pic32mx_skes"/>
+        <Include dnOrder="4" value="C:\microchip\harmony\v2_06\apps\MINF\TP\TP2\MINF-SLO2-2024\TP2_TimerPwm_VCO_NBN\firmware\src\system_config\default\framework"/>
+        <Include dnOrder="5" value="../../../../../../../../bsp/pic32mx_skes"/>
       </C32>
     </CompilerItems>
     <Libraries dnOrder="3">
-      <Library dnOrder="0" value="../../../../../../bin/framework/peripheral/PIC32MX795F512L_peripherals.a"/>
+      <Library dnOrder="0" value="../../../../../../../../bin/framework/peripheral/PIC32MX795F512L_peripherals.a"/>
     </Libraries>
   </Manifest>
 </Configuration>

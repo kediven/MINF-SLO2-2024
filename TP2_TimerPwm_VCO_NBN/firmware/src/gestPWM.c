@@ -71,7 +71,8 @@ void GPWM_Initialize(S_pwmSettings *pData)
  *          pour les canaux spécifiés, et met à jour les réglages de vitesse et d'angle
  *          dans la structure `pData`.
  */
-void GPWM_GetSettings(S_pwmSettings *pData) {
+void GPWM_GetSettings(S_pwmSettings *pData) 
+{
     // Buffers circulaires pour les valeurs ADC du canal 1 (statique pour conserver les données entre appels)
     static uint16_t adc1Values[ADC_SAMPLING_SIZE] = {0}; // Stocke les dernières valeurs ADC du canal 1
     static uint32_t adc1Sum = 0; // Somme des valeurs dans le buffer circulaire du canal 1
