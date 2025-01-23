@@ -9,10 +9,13 @@
           <logicalFolder name="f1" displayName="default" projectFiles="true">
             <logicalFolder name="f1" displayName="framework" projectFiles="true">
               <logicalFolder name="f1" displayName="driver" projectFiles="true">
-                <logicalFolder name="f1" displayName="tmr" projectFiles="true">
+                <logicalFolder name="f1" displayName="oc" projectFiles="true">
+                  <itemPath>../src/system_config/default/framework/driver/oc/drv_oc_static.h</itemPath>
+                </logicalFolder>
+                <logicalFolder name="f2" displayName="tmr" projectFiles="true">
                   <itemPath>../src/system_config/default/framework/driver/tmr/drv_tmr_static.h</itemPath>
                 </logicalFolder>
-                <logicalFolder name="f2" displayName="usart" projectFiles="true">
+                <logicalFolder name="f3" displayName="usart" projectFiles="true">
                   <logicalFolder name="f1" displayName="src" projectFiles="true">
                     <itemPath>../src/system_config/default/framework/driver/usart/src/drv_usart_static_local.h</itemPath>
                   </logicalFolder>
@@ -50,7 +53,10 @@
       </logicalFolder>
       <logicalFolder name="f1" displayName="framework" projectFiles="true">
         <logicalFolder name="f1" displayName="driver" projectFiles="true">
-          <logicalFolder name="f1" displayName="tmr" projectFiles="true">
+          <logicalFolder name="f1" displayName="oc" projectFiles="true">
+            <itemPath>../../../../../../../framework/driver/oc/drv_oc.h</itemPath>
+          </logicalFolder>
+          <logicalFolder name="f2" displayName="tmr" projectFiles="true">
             <logicalFolder name="f1" displayName="src" projectFiles="true">
               <itemPath>../../../../../../../framework/driver/tmr/src/drv_tmr_variant_mapping.h</itemPath>
             </logicalFolder>
@@ -59,7 +65,7 @@
             <itemPath>../../../../../../../framework/driver/tmr/drv_tmr_compatibility.h</itemPath>
             <itemPath>../../../../../../../framework/driver/tmr/tmr_definitions_pic32m.h</itemPath>
           </logicalFolder>
-          <logicalFolder name="f2" displayName="usart" projectFiles="true">
+          <logicalFolder name="f3" displayName="usart" projectFiles="true">
             <logicalFolder name="f1" displayName="src" projectFiles="true">
               <itemPath>../../../../../../../framework/driver/usart/src/drv_usart_variant_mapping.h</itemPath>
             </logicalFolder>
@@ -120,13 +126,19 @@
           <logicalFolder name="f1" displayName="default" projectFiles="true">
             <logicalFolder name="f1" displayName="framework" projectFiles="true">
               <logicalFolder name="f1" displayName="driver" projectFiles="true">
-                <logicalFolder name="f1" displayName="tmr" projectFiles="true">
+                <logicalFolder name="f1" displayName="oc" projectFiles="true">
+                  <logicalFolder name="f1" displayName="src" projectFiles="true">
+                    <itemPath>../src/system_config/default/framework/driver/oc/src/drv_oc_mapping.c</itemPath>
+                    <itemPath>../src/system_config/default/framework/driver/oc/src/drv_oc_static.c</itemPath>
+                  </logicalFolder>
+                </logicalFolder>
+                <logicalFolder name="f2" displayName="tmr" projectFiles="true">
                   <logicalFolder name="f1" displayName="src" projectFiles="true">
                     <itemPath>../src/system_config/default/framework/driver/tmr/src/drv_tmr_static.c</itemPath>
                     <itemPath>../src/system_config/default/framework/driver/tmr/src/drv_tmr_mapping.c</itemPath>
                   </logicalFolder>
                 </logicalFolder>
-                <logicalFolder name="f2" displayName="usart" projectFiles="true">
+                <logicalFolder name="f3" displayName="usart" projectFiles="true">
                   <logicalFolder name="f1" displayName="src" projectFiles="true">
                     <itemPath>../src/system_config/default/framework/driver/usart/src/drv_usart_mapping.c</itemPath>
                     <itemPath>../src/system_config/default/framework/driver/usart/src/drv_usart_static.c</itemPath>
@@ -252,7 +264,7 @@
         <property key="enable-unroll-loops" value="false"/>
         <property key="exclude-floating-point" value="false"/>
         <property key="extra-include-directories"
-                  value="../src;../src/system_config/default;../src/default;../src/system_config/default/framework;../../../../../../../framework;../../../../../../../bsp/pic32mx_skes"/>
+                  value="../src;../src/system_config/default;../src/default;../../../../../../../framework;../src/system_config/default/framework;../../../../../../../bsp/pic32mx_skes"/>
         <property key="generate-16-bit-code" value="false"/>
         <property key="generate-micro-compressed-code" value="false"/>
         <property key="isolate-each-function" value="true"/>
