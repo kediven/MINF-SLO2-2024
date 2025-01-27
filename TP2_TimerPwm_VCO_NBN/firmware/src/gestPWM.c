@@ -240,39 +240,3 @@ void GPWM_ExecPWM(S_pwmSettings *pData)
     PLIB_OC_PulseWidth16BitSet(OC_ID_3, PulseWidthOC3); // Applique la largeur calculée à OC3
 }
 
-/**
- * @brief Exécute une PWM logicielle pour le contrôle d'une LED.
- * @author LMS - VCO
- * @date 2025-01-02
- *
- * @param pData Pointeur vers une structure S_pwmSettings contenant les paramètres de vitesse (absSpeed).
- *
- * @details Cette fonction génère une PWM logicielle en contrôlant l'état de la LED BSP_LED_2
- *          en fonction de la vitesse absolue. La période est fixe (100 cycles).
- */
-void GPWM_ExecPWMSoft(S_pwmSettings *pData)
-{
-    // Compteur pour générer la PWM logicielle
-    static uint8_t pwmCounter = 0;
-
-    // Gestion de l'état de la LED en fonction de la vitesse absolue
-    if (pwmCounter < pData->absSpeed || pData->absSpeed == 99)
-    {
-        // Lorsque le compteur est inférieur à la vitesse absolue (ON)
-        BSP_LEDOff(BSP_LED_2); // État logique pour éteindre la LED
-    }
-    else
-    {
-        // Sinon, allumer la LED
-        BSP_LEDOn(BSP_LED_2); // État logique pour allumer la LED
-    }
-
-    // Incrémentation du compteur
-    pwmCounter = pwmCounter + 1;
-
-    // Réinitialisation du compteur après 100 cycles
-    if (pwmCounter >= 100)
-    {
-        pwmCounter = 0;
-    }
-}

@@ -55,7 +55,10 @@ build/default/production/_ext/1360937237/gestPWM.o: ../src/gestPWM.c \
  ../src/system_config/default/system_definitions.h \
  ../../../../../../../framework/system/common/sys_common.h \
  ../../../../../../../framework/system/common/sys_module.h \
- ../src/system_config/default/framework/system/devcon/sys_devcon.h \
+ ../../../../../../../framework/driver/oc/drv_oc.h \
+ ../../../../../../../framework/driver/driver_common.h \
+ ../src/system_config/default/framework/driver/oc/drv_oc_static.h \
+ ../../../../../../../framework/system/devcon/sys_devcon.h \
  ../../../../../../../framework/system/system.h \
  ../../../../../../../framework/system/clk/sys_clk.h \
  ../../../../../../../framework/peripheral/osc/plib_osc.h \
@@ -137,7 +140,6 @@ build/default/production/_ext/1360937237/gestPWM.o: ../src/gestPWM.c \
  ../../../../../../../framework/system/int/sys_int_mapping.h \
  ../src/system_config/default/framework/driver/tmr/drv_tmr_static.h \
  ../../../../../../../framework/driver/tmr/drv_tmr.h \
- ../../../../../../../framework/driver/driver_common.h \
  ../../../../../../../framework/driver/tmr/tmr_definitions_pic32m.h \
  ../../../../../../../framework/driver/tmr/drv_tmr_compatibility.h \
  ../src/system_config/default/framework/driver/usart/drv_usart_static.h \
@@ -372,7 +374,13 @@ build/default/production/_ext/1360937237/gestPWM.o: ../src/gestPWM.c \
 
 ../../../../../../../framework/system/common/sys_module.h:
 
-../src/system_config/default/framework/system/devcon/sys_devcon.h:
+../../../../../../../framework/driver/oc/drv_oc.h:
+
+../../../../../../../framework/driver/driver_common.h:
+
+../src/system_config/default/framework/driver/oc/drv_oc_static.h:
+
+../../../../../../../framework/system/devcon/sys_devcon.h:
 
 ../../../../../../../framework/system/system.h:
 
@@ -535,8 +543,6 @@ build/default/production/_ext/1360937237/gestPWM.o: ../src/gestPWM.c \
 ../src/system_config/default/framework/driver/tmr/drv_tmr_static.h:
 
 ../../../../../../../framework/driver/tmr/drv_tmr.h:
-
-../../../../../../../framework/driver/driver_common.h:
 
 ../../../../../../../framework/driver/tmr/tmr_definitions_pic32m.h:
 

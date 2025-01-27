@@ -4,9 +4,7 @@ build/default/production/_ext/1688732426/system_interrupt.o: \
  ../../../../../../../bsp/pic32mx_skes/Mc32DriverAdc.h \
  ../src/system_config/default/system_definitions.h \
  ../../../../../../../framework/system/common/sys_module.h \
- ../src/system_config/default/framework/system/devcon/sys_devcon.h \
- ../../../../../../../framework/system/system.h \
- ../../../../../../../framework/system/clk/sys_clk.h \
+ ../../../../../../../framework/driver/oc/drv_oc.h \
  ../src/system_config/default/system_config.h \
  ../../../../../../../bsp/pic32mx_skes/bsp.h \
  ../../../../../../../framework/peripheral/ports/plib_ports.h \
@@ -60,6 +58,11 @@ build/default/production/_ext/1688732426/system_interrupt.o: \
  ../../../../../../../framework/peripheral/tmr/processor/../templates/tmr_CounterAsyncWriteControl_Default.h \
  ../../../../../../../framework/peripheral/tmr/processor/../templates/tmr_CounterAsyncWriteInProgress_Default.h \
  ../../../../../../../framework/peripheral/tmr/processor/../templates/tmr_TimerOperationMode_Default.h \
+ ../../../../../../../framework/driver/driver_common.h \
+ ../src/system_config/default/framework/driver/oc/drv_oc_static.h \
+ ../../../../../../../framework/system/devcon/sys_devcon.h \
+ ../../../../../../../framework/system/system.h \
+ ../../../../../../../framework/system/clk/sys_clk.h \
  ../../../../../../../framework/peripheral/osc/plib_osc.h \
  ../../../../../../../framework/peripheral/osc/processor/osc_processor.h \
  ../../../../../../../framework/peripheral/osc/processor/osc_p32xxxx.h \
@@ -139,7 +142,6 @@ build/default/production/_ext/1688732426/system_interrupt.o: \
  ../../../../../../../framework/system/int/sys_int_mapping.h \
  ../src/system_config/default/framework/driver/tmr/drv_tmr_static.h \
  ../../../../../../../framework/driver/tmr/drv_tmr.h \
- ../../../../../../../framework/driver/driver_common.h \
  ../../../../../../../framework/driver/tmr/tmr_definitions_pic32m.h \
  ../../../../../../../framework/driver/tmr/drv_tmr_compatibility.h \
  ../src/system_config/default/framework/driver/usart/drv_usart_static.h \
@@ -254,11 +256,7 @@ build/default/production/_ext/1688732426/system_interrupt.o: \
 
 ../../../../../../../framework/system/common/sys_module.h:
 
-../src/system_config/default/framework/system/devcon/sys_devcon.h:
-
-../../../../../../../framework/system/system.h:
-
-../../../../../../../framework/system/clk/sys_clk.h:
+../../../../../../../framework/driver/oc/drv_oc.h:
 
 ../src/system_config/default/system_config.h:
 
@@ -365,6 +363,16 @@ build/default/production/_ext/1688732426/system_interrupt.o: \
 ../../../../../../../framework/peripheral/tmr/processor/../templates/tmr_CounterAsyncWriteInProgress_Default.h:
 
 ../../../../../../../framework/peripheral/tmr/processor/../templates/tmr_TimerOperationMode_Default.h:
+
+../../../../../../../framework/driver/driver_common.h:
+
+../src/system_config/default/framework/driver/oc/drv_oc_static.h:
+
+../../../../../../../framework/system/devcon/sys_devcon.h:
+
+../../../../../../../framework/system/system.h:
+
+../../../../../../../framework/system/clk/sys_clk.h:
 
 ../../../../../../../framework/peripheral/osc/plib_osc.h:
 
@@ -523,8 +531,6 @@ build/default/production/_ext/1688732426/system_interrupt.o: \
 ../src/system_config/default/framework/driver/tmr/drv_tmr_static.h:
 
 ../../../../../../../framework/driver/tmr/drv_tmr.h:
-
-../../../../../../../framework/driver/driver_common.h:
 
 ../../../../../../../framework/driver/tmr/tmr_definitions_pic32m.h:
 

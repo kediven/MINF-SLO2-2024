@@ -110,9 +110,6 @@ void App_Timer1Callback()
     // Compteur pour les 3 premières secondes (approximation basée sur une période du timer)
     static uint8_t threeSecondCounter = 0;
 
-    // Compteur pour nettoyer les lignes LCD une seule fois
-    static uint8_t endInit = 0;
-
     // Pendant les 3 premières secondes
     if (threeSecondCounter < 149)
     {
@@ -123,51 +120,9 @@ void App_Timer1Callback()
         // Après les 3 premières secondes, exécute les tâches de service
         APP_UpdateState(APP_STATE_SERVICE_TASKS);
         
-        // Nettoie les lignes 2 et 3 du LCD une seule fois
-        if (endInit == 0)
-        {
-            DRV_TMR3_Start(); // Timer 4
-            // Nettoyer le LCD
-            ClearLcd();
-            endInit = 1; 
-        }
-
-        // Allume la LED 0 (BSP_LED_0) pour indiquer l'exécution des tâches
-        BSP_LEDOn(BSP_LED_0);
-
-        // Récupère les paramètres PWM dans `pData`
-        GPWM_GetSettings(&pData);
-
-        // Affiche les paramètres PWM sur l'écran LCD
-        GPWM_DispSettings(&pData);
-
-        // Exécute la PWM avec les paramètres actuels
-        GPWM_ExecPWM(&pData);
-
-        // Éteint la LED 0 (BSP_LED_0) après l'exécution des tâches
-        BSP_LEDOff(BSP_LED_0);
+        // Clear le LCD
+        ClearLcd();
     }
-}
-
-/**
- * @brief Callback pour le Timer 4. Gère l'exécution de la PWM logiciel.
- * @author LMS - VCO
- * @date 2025-01-02
- *
- * @details Cette fonction est appelée à chaque interruption du Timer 4. Elle allume
- *          une LED pour indiquer l'exécution de la PWM logiciel, exécute la PWM
- *          et éteint ensuite la LED.
- */
-void App_Timer4Callback()
-{
-    // Allume la LED BSP_LED_1 pendant l'exécution de la PWM logiciel
-    BSP_LEDOn(BSP_LED_1);
-
-    // Exécute la PWM logiciel avec les paramètres contenus dans `pData`
-    GPWM_ExecPWMSoft(&pData);
-
-    // Éteint la LED BSP_LED_1 après l'exécution de la PWM logiciel
-    BSP_LEDOff(BSP_LED_1);
 }
 
 // *****************************************************************************
@@ -310,6 +265,8 @@ void APP_Tasks ( void )
         /* État attente de l'application */
         case APP_STATE_WAIT :
         {
+            
+            
             break;
         }
         

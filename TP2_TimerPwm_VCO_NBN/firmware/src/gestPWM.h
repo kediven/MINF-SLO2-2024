@@ -80,10 +80,4 @@ void GPWM_DispSettings(S_pwmSettings *pData);
  */
 void GPWM_ExecPWM(S_pwmSettings *pData);
 
-/**
- * @brief Génère une PWM logicielle pour simuler un signal PWM.
- * @param pData Pointeur vers la structure S_pwmSettings utilisée pour la génération.
- */
-void GPWM_ExecPWMSoft(S_pwmSettings *pData);
-
 #endif // GestPWM_H
