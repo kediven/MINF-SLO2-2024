@@ -5,113 +5,113 @@ Optional file libmchp_peripheral_32MX795F512L.a not found
 Archive member included because of file (symbol)
 
 c:/program files/microchip/xc32/v2.50/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib\libpic32.a(default-bootstrap-exception-handler.o)
-                              C:\Users\NICBES~1\AppData\Local\Temp\ccIC1yQ9.o (_bootstrap_exception_handler)
+                              C:\Users\NICBES~1\AppData\Local\Temp\ccg5l1il.o (_bootstrap_exception_handler)
 c:/program files/microchip/xc32/v2.50/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib\libpic32.a(default-on-reset.o)
-                              C:\Users\NICBES~1\AppData\Local\Temp\ccIC1yQ9.o (_on_reset)
+                              C:\Users\NICBES~1\AppData\Local\Temp\ccg5l1il.o (_on_reset)
 c:/program files/microchip/xc32/v2.50/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib\libpic32.a(default-on-bootstrap.o)
-                              C:\Users\NICBES~1\AppData\Local\Temp\ccIC1yQ9.o (_on_bootstrap)
+                              C:\Users\NICBES~1\AppData\Local\Temp\ccg5l1il.o (_on_bootstrap)
 c:/program files/microchip/xc32/v2.50/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib\libpic32.a(default-nmi-handler.o)
-                              C:\Users\NICBES~1\AppData\Local\Temp\ccIC1yQ9.o (_nmi_handler)
+                              C:\Users\NICBES~1\AppData\Local\Temp\ccg5l1il.o (_nmi_handler)
 c:/program files/microchip/xc32/v2.50/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib\libpic32.a(pic32_data_init.o)
-                              C:\Users\NICBES~1\AppData\Local\Temp\ccIC1yQ9.o (__pic32_data_init)
+                              C:\Users\NICBES~1\AppData\Local\Temp\ccg5l1il.o (__pic32_data_init)
 c:/program files/microchip/xc32/v2.50/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib\libpic32.a(general-exception.o)
-                              C:\Users\NICBES~1\AppData\Local\Temp\ccIC1yQ9.o (_general_exception_context)
+                              C:\Users\NICBES~1\AppData\Local\Temp\ccg5l1il.o (_general_exception_context)
 c:/program files/microchip/xc32/v2.50/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib\libpic32.a(vector0.o)
-                              C:\Users\NICBES~1\AppData\Local\Temp\ccTS2xY7.o (__vector_dispatch_0)
+                              C:\Users\NICBES~1\AppData\Local\Temp\ccTWbktw.o (__vector_dispatch_0)
 c:/program files/microchip/xc32/v2.50/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib\libpic32.a(vector1.o)
-                              C:\Users\NICBES~1\AppData\Local\Temp\ccTS2xY7.o (__vector_dispatch_1)
+                              C:\Users\NICBES~1\AppData\Local\Temp\ccTWbktw.o (__vector_dispatch_1)
 c:/program files/microchip/xc32/v2.50/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib\libpic32.a(vector2.o)
-                              C:\Users\NICBES~1\AppData\Local\Temp\ccTS2xY7.o (__vector_dispatch_2)
+                              C:\Users\NICBES~1\AppData\Local\Temp\ccTWbktw.o (__vector_dispatch_2)
 c:/program files/microchip/xc32/v2.50/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib\libpic32.a(vector3.o)
-                              C:\Users\NICBES~1\AppData\Local\Temp\ccTS2xY7.o (__vector_dispatch_3)
+                              C:\Users\NICBES~1\AppData\Local\Temp\ccTWbktw.o (__vector_dispatch_3)
 c:/program files/microchip/xc32/v2.50/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib\libpic32.a(vector5.o)
-                              C:\Users\NICBES~1\AppData\Local\Temp\ccTS2xY7.o (__vector_dispatch_5)
+                              C:\Users\NICBES~1\AppData\Local\Temp\ccTWbktw.o (__vector_dispatch_5)
 c:/program files/microchip/xc32/v2.50/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib\libpic32.a(vector6.o)
-                              C:\Users\NICBES~1\AppData\Local\Temp\ccTS2xY7.o (__vector_dispatch_6)
+                              C:\Users\NICBES~1\AppData\Local\Temp\ccTWbktw.o (__vector_dispatch_6)
 c:/program files/microchip/xc32/v2.50/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib\libpic32.a(vector7.o)
-                              C:\Users\NICBES~1\AppData\Local\Temp\ccTS2xY7.o (__vector_dispatch_7)
+                              C:\Users\NICBES~1\AppData\Local\Temp\ccTWbktw.o (__vector_dispatch_7)
 c:/program files/microchip/xc32/v2.50/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib\libpic32.a(vector9.o)
-                              C:\Users\NICBES~1\AppData\Local\Temp\ccTS2xY7.o (__vector_dispatch_9)
+                              C:\Users\NICBES~1\AppData\Local\Temp\ccTWbktw.o (__vector_dispatch_9)
 c:/program files/microchip/xc32/v2.50/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib\libpic32.a(vector10.o)
-                              C:\Users\NICBES~1\AppData\Local\Temp\ccTS2xY7.o (__vector_dispatch_10)
+                              C:\Users\NICBES~1\AppData\Local\Temp\ccTWbktw.o (__vector_dispatch_10)
 c:/program files/microchip/xc32/v2.50/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib\libpic32.a(vector11.o)
-                              C:\Users\NICBES~1\AppData\Local\Temp\ccTS2xY7.o (__vector_dispatch_11)
+                              C:\Users\NICBES~1\AppData\Local\Temp\ccTWbktw.o (__vector_dispatch_11)
 c:/program files/microchip/xc32/v2.50/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib\libpic32.a(vector13.o)
-                              C:\Users\NICBES~1\AppData\Local\Temp\ccTS2xY7.o (__vector_dispatch_13)
+                              C:\Users\NICBES~1\AppData\Local\Temp\ccTWbktw.o (__vector_dispatch_13)
 c:/program files/microchip/xc32/v2.50/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib\libpic32.a(vector14.o)
-                              C:\Users\NICBES~1\AppData\Local\Temp\ccTS2xY7.o (__vector_dispatch_14)
+                              C:\Users\NICBES~1\AppData\Local\Temp\ccTWbktw.o (__vector_dispatch_14)
 c:/program files/microchip/xc32/v2.50/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib\libpic32.a(vector15.o)
-                              C:\Users\NICBES~1\AppData\Local\Temp\ccTS2xY7.o (__vector_dispatch_15)
+                              C:\Users\NICBES~1\AppData\Local\Temp\ccTWbktw.o (__vector_dispatch_15)
 c:/program files/microchip/xc32/v2.50/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib\libpic32.a(vector16.o)
-                              C:\Users\NICBES~1\AppData\Local\Temp\ccTS2xY7.o (__vector_dispatch_16)
+                              C:\Users\NICBES~1\AppData\Local\Temp\ccTWbktw.o (__vector_dispatch_16)
 c:/program files/microchip/xc32/v2.50/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib\libpic32.a(vector17.o)
-                              C:\Users\NICBES~1\AppData\Local\Temp\ccTS2xY7.o (__vector_dispatch_17)
+                              C:\Users\NICBES~1\AppData\Local\Temp\ccTWbktw.o (__vector_dispatch_17)
 c:/program files/microchip/xc32/v2.50/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib\libpic32.a(vector18.o)
-                              C:\Users\NICBES~1\AppData\Local\Temp\ccTS2xY7.o (__vector_dispatch_18)
+                              C:\Users\NICBES~1\AppData\Local\Temp\ccTWbktw.o (__vector_dispatch_18)
 c:/program files/microchip/xc32/v2.50/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib\libpic32.a(vector19.o)
-                              C:\Users\NICBES~1\AppData\Local\Temp\ccTS2xY7.o (__vector_dispatch_19)
+                              C:\Users\NICBES~1\AppData\Local\Temp\ccTWbktw.o (__vector_dispatch_19)
 c:/program files/microchip/xc32/v2.50/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib\libpic32.a(vector20.o)
-                              C:\Users\NICBES~1\AppData\Local\Temp\ccTS2xY7.o (__vector_dispatch_20)
+                              C:\Users\NICBES~1\AppData\Local\Temp\ccTWbktw.o (__vector_dispatch_20)
 c:/program files/microchip/xc32/v2.50/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib\libpic32.a(vector21.o)
-                              C:\Users\NICBES~1\AppData\Local\Temp\ccTS2xY7.o (__vector_dispatch_21)
+                              C:\Users\NICBES~1\AppData\Local\Temp\ccTWbktw.o (__vector_dispatch_21)
 c:/program files/microchip/xc32/v2.50/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib\libpic32.a(vector22.o)
-                              C:\Users\NICBES~1\AppData\Local\Temp\ccTS2xY7.o (__vector_dispatch_22)
+                              C:\Users\NICBES~1\AppData\Local\Temp\ccTWbktw.o (__vector_dispatch_22)
 c:/program files/microchip/xc32/v2.50/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib\libpic32.a(vector23.o)
-                              C:\Users\NICBES~1\AppData\Local\Temp\ccTS2xY7.o (__vector_dispatch_23)
+                              C:\Users\NICBES~1\AppData\Local\Temp\ccTWbktw.o (__vector_dispatch_23)
 c:/program files/microchip/xc32/v2.50/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib\libpic32.a(vector25.o)
-                              C:\Users\NICBES~1\AppData\Local\Temp\ccTS2xY7.o (__vector_dispatch_25)
+                              C:\Users\NICBES~1\AppData\Local\Temp\ccTWbktw.o (__vector_dispatch_25)
 c:/program files/microchip/xc32/v2.50/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib\libpic32.a(vector26.o)
-                              C:\Users\NICBES~1\AppData\Local\Temp\ccTS2xY7.o (__vector_dispatch_26)
+                              C:\Users\NICBES~1\AppData\Local\Temp\ccTWbktw.o (__vector_dispatch_26)
 c:/program files/microchip/xc32/v2.50/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib\libpic32.a(vector27.o)
-                              C:\Users\NICBES~1\AppData\Local\Temp\ccTS2xY7.o (__vector_dispatch_27)
+                              C:\Users\NICBES~1\AppData\Local\Temp\ccTWbktw.o (__vector_dispatch_27)
 c:/program files/microchip/xc32/v2.50/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib\libpic32.a(vector28.o)
-                              C:\Users\NICBES~1\AppData\Local\Temp\ccTS2xY7.o (__vector_dispatch_28)
+                              C:\Users\NICBES~1\AppData\Local\Temp\ccTWbktw.o (__vector_dispatch_28)
 c:/program files/microchip/xc32/v2.50/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib\libpic32.a(vector29.o)
-                              C:\Users\NICBES~1\AppData\Local\Temp\ccTS2xY7.o (__vector_dispatch_29)
+                              C:\Users\NICBES~1\AppData\Local\Temp\ccTWbktw.o (__vector_dispatch_29)
 c:/program files/microchip/xc32/v2.50/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib\libpic32.a(vector30.o)
-                              C:\Users\NICBES~1\AppData\Local\Temp\ccTS2xY7.o (__vector_dispatch_30)
+                              C:\Users\NICBES~1\AppData\Local\Temp\ccTWbktw.o (__vector_dispatch_30)
 c:/program files/microchip/xc32/v2.50/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib\libpic32.a(vector31.o)
-                              C:\Users\NICBES~1\AppData\Local\Temp\ccTS2xY7.o (__vector_dispatch_31)
+                              C:\Users\NICBES~1\AppData\Local\Temp\ccTWbktw.o (__vector_dispatch_31)
 c:/program files/microchip/xc32/v2.50/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib\libpic32.a(vector32.o)
-                              C:\Users\NICBES~1\AppData\Local\Temp\ccTS2xY7.o (__vector_dispatch_32)
+                              C:\Users\NICBES~1\AppData\Local\Temp\ccTWbktw.o (__vector_dispatch_32)
 c:/program files/microchip/xc32/v2.50/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib\libpic32.a(vector33.o)
-                              C:\Users\NICBES~1\AppData\Local\Temp\ccTS2xY7.o (__vector_dispatch_33)
+                              C:\Users\NICBES~1\AppData\Local\Temp\ccTWbktw.o (__vector_dispatch_33)
 c:/program files/microchip/xc32/v2.50/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib\libpic32.a(vector34.o)
-                              C:\Users\NICBES~1\AppData\Local\Temp\ccTS2xY7.o (__vector_dispatch_34)
+                              C:\Users\NICBES~1\AppData\Local\Temp\ccTWbktw.o (__vector_dispatch_34)
 c:/program files/microchip/xc32/v2.50/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib\libpic32.a(vector35.o)
-                              C:\Users\NICBES~1\AppData\Local\Temp\ccTS2xY7.o (__vector_dispatch_35)
+                              C:\Users\NICBES~1\AppData\Local\Temp\ccTWbktw.o (__vector_dispatch_35)
 c:/program files/microchip/xc32/v2.50/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib\libpic32.a(vector36.o)
-                              C:\Users\NICBES~1\AppData\Local\Temp\ccTS2xY7.o (__vector_dispatch_36)
+                              C:\Users\NICBES~1\AppData\Local\Temp\ccTWbktw.o (__vector_dispatch_36)
 c:/program files/microchip/xc32/v2.50/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib\libpic32.a(vector37.o)
-                              C:\Users\NICBES~1\AppData\Local\Temp\ccTS2xY7.o (__vector_dispatch_37)
+                              C:\Users\NICBES~1\AppData\Local\Temp\ccTWbktw.o (__vector_dispatch_37)
 c:/program files/microchip/xc32/v2.50/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib\libpic32.a(vector38.o)
-                              C:\Users\NICBES~1\AppData\Local\Temp\ccTS2xY7.o (__vector_dispatch_38)
+                              C:\Users\NICBES~1\AppData\Local\Temp\ccTWbktw.o (__vector_dispatch_38)
 c:/program files/microchip/xc32/v2.50/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib\libpic32.a(vector39.o)
-                              C:\Users\NICBES~1\AppData\Local\Temp\ccTS2xY7.o (__vector_dispatch_39)
+                              C:\Users\NICBES~1\AppData\Local\Temp\ccTWbktw.o (__vector_dispatch_39)
 c:/program files/microchip/xc32/v2.50/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib\libpic32.a(vector40.o)
-                              C:\Users\NICBES~1\AppData\Local\Temp\ccTS2xY7.o (__vector_dispatch_40)
+                              C:\Users\NICBES~1\AppData\Local\Temp\ccTWbktw.o (__vector_dispatch_40)
 c:/program files/microchip/xc32/v2.50/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib\libpic32.a(vector41.o)
-                              C:\Users\NICBES~1\AppData\Local\Temp\ccTS2xY7.o (__vector_dispatch_41)
+                              C:\Users\NICBES~1\AppData\Local\Temp\ccTWbktw.o (__vector_dispatch_41)
 c:/program files/microchip/xc32/v2.50/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib\libpic32.a(vector42.o)
-                              C:\Users\NICBES~1\AppData\Local\Temp\ccTS2xY7.o (__vector_dispatch_42)
+                              C:\Users\NICBES~1\AppData\Local\Temp\ccTWbktw.o (__vector_dispatch_42)
 c:/program files/microchip/xc32/v2.50/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib\libpic32.a(vector43.o)
-                              C:\Users\NICBES~1\AppData\Local\Temp\ccTS2xY7.o (__vector_dispatch_43)
+                              C:\Users\NICBES~1\AppData\Local\Temp\ccTWbktw.o (__vector_dispatch_43)
 c:/program files/microchip/xc32/v2.50/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib\libpic32.a(vector44.o)
-                              C:\Users\NICBES~1\AppData\Local\Temp\ccTS2xY7.o (__vector_dispatch_44)
+                              C:\Users\NICBES~1\AppData\Local\Temp\ccTWbktw.o (__vector_dispatch_44)
 c:/program files/microchip/xc32/v2.50/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib\libpic32.a(vector45.o)
-                              C:\Users\NICBES~1\AppData\Local\Temp\ccTS2xY7.o (__vector_dispatch_45)
+                              C:\Users\NICBES~1\AppData\Local\Temp\ccTWbktw.o (__vector_dispatch_45)
 c:/program files/microchip/xc32/v2.50/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib\libpic32.a(vector46.o)
-                              C:\Users\NICBES~1\AppData\Local\Temp\ccTS2xY7.o (__vector_dispatch_46)
+                              C:\Users\NICBES~1\AppData\Local\Temp\ccTWbktw.o (__vector_dispatch_46)
 c:/program files/microchip/xc32/v2.50/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib\libpic32.a(vector47.o)
-                              C:\Users\NICBES~1\AppData\Local\Temp\ccTS2xY7.o (__vector_dispatch_47)
+                              C:\Users\NICBES~1\AppData\Local\Temp\ccTWbktw.o (__vector_dispatch_47)
 c:/program files/microchip/xc32/v2.50/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib\libpic32.a(vector48.o)
-                              C:\Users\NICBES~1\AppData\Local\Temp\ccTS2xY7.o (__vector_dispatch_48)
+                              C:\Users\NICBES~1\AppData\Local\Temp\ccTWbktw.o (__vector_dispatch_48)
 c:/program files/microchip/xc32/v2.50/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib\libpic32.a(vector49.o)
-                              C:\Users\NICBES~1\AppData\Local\Temp\ccTS2xY7.o (__vector_dispatch_49)
+                              C:\Users\NICBES~1\AppData\Local\Temp\ccTWbktw.o (__vector_dispatch_49)
 c:/program files/microchip/xc32/v2.50/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib\libpic32.a(vector50.o)
-                              C:\Users\NICBES~1\AppData\Local\Temp\ccTS2xY7.o (__vector_dispatch_50)
+                              C:\Users\NICBES~1\AppData\Local\Temp\ccTWbktw.o (__vector_dispatch_50)
 c:/program files/microchip/xc32/v2.50/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib\libpic32.a(vector51.o)
-                              C:\Users\NICBES~1\AppData\Local\Temp\ccTS2xY7.o (__vector_dispatch_51)
+                              C:\Users\NICBES~1\AppData\Local\Temp\ccTWbktw.o (__vector_dispatch_51)
 c:/program files/microchip/xc32/v2.50/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib\libpic32.a(defaultinterrupt.o)
                               c:/program files/microchip/xc32/v2.50/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib\libpic32.a(vector0.o) (_DefaultInterrupt)
 c:/program files/microchip/xc32/v2.50/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib\libc.a(vsprintf.o)
@@ -195,8 +195,8 @@ section                    address  length [bytes]      (dec)  Description
 .rodata                 0x9d003a64          0x200         512  Read-only const 
 .text.fround            0x9d003c64          0x1cc         460   
 .text.lcd_read_byte     0x9d003e30          0x174         372   
-.text.DRV_USART0_Initia 0x9d003fa4          0x170         368   
-.text.GPWM_GetSettings  0x9d004114          0x16c         364   
+.text.DRV_USART0_Initia 0x9d003fa4          0x16c         364   
+.text.GPWM_GetSettings  0x9d004110          0x16c         364   
 .rodata                 0x9d004280          0x160         352  Read-only const 
 .text.IntHandlerDrvTmrI 0x9d0043e0          0x14c         332   
 .text.fputc             0x9d00452c          0x144         324   
@@ -286,7 +286,7 @@ section                    address  length [bytes]      (dec)  Description
 .text._on_reset         0x9d006ba4            0x8           8   
 .text._on_bootstrap     0x9d006bac            0x8           8   
 .rodata                 0x9d006bb8           0x10          16  Read-only const 
-      Total kseg0_program_mem used  :      0x6bc4       27588  5.3% of 0x80000
+      Total kseg0_program_mem used  :      0x6bc0       27584  5.3% of 0x80000
 
 kseg0 Boot-Memory Usage
 section                    address  length [bytes]      (dec)  Description
@@ -358,7 +358,7 @@ section                    address  length [bytes]      (dec)  Description
 .bev_excpt              0xbfc00380           0x10          16  BEV-Exception 
          Total kseg1_boot_mem used  :       0x1ac         428  36.6% of 0x490
         --------------------------------------------------------------------------
-         Total Program Memory used  :      0x6f20       28448  5.3% of 0x81e00
+         Total Program Memory used  :      0x6f1c       28444  5.3% of 0x81e00
         --------------------------------------------------------------------------
 
 
@@ -891,19 +891,19 @@ Discarded input sections
                 0x00000000       0x54 build/default/production/_ext/1140991836/sys_int_pic32.o
  .text.SYS_INT_ExternalInterruptTriggerSet
                 0x00000000       0x28 build/default/production/_ext/1140991836/sys_int_pic32.o
- .text          0x00000000        0x0 C:\Users\NICBES~1\AppData\Local\Temp\ccIC1yQ9.o
- .data          0x00000000        0x0 C:\Users\NICBES~1\AppData\Local\Temp\ccIC1yQ9.o
- .bss           0x00000000        0x0 C:\Users\NICBES~1\AppData\Local\Temp\ccIC1yQ9.o
- .reginfo       0x00000000       0x18 C:\Users\NICBES~1\AppData\Local\Temp\ccIC1yQ9.o
- .text          0x00000000        0x0 C:\Users\NICBES~1\AppData\Local\Temp\cc5ybIK4.o
- .data          0x00000000        0x0 C:\Users\NICBES~1\AppData\Local\Temp\cc5ybIK4.o
- .bss           0x00000000        0x0 C:\Users\NICBES~1\AppData\Local\Temp\cc5ybIK4.o
- .reginfo       0x00000000       0x18 C:\Users\NICBES~1\AppData\Local\Temp\cc5ybIK4.o
- .text          0x00000000        0x0 C:\Users\NICBES~1\AppData\Local\Temp\ccTS2xY7.o
- .data          0x00000000        0x0 C:\Users\NICBES~1\AppData\Local\Temp\ccTS2xY7.o
- .bss           0x00000000        0x0 C:\Users\NICBES~1\AppData\Local\Temp\ccTS2xY7.o
- .reginfo       0x00000000       0x18 C:\Users\NICBES~1\AppData\Local\Temp\ccTS2xY7.o
- .discard       0x00000000       0xd0 C:\Users\NICBES~1\AppData\Local\Temp\ccTS2xY7.o
+ .text          0x00000000        0x0 C:\Users\NICBES~1\AppData\Local\Temp\ccg5l1il.o
+ .data          0x00000000        0x0 C:\Users\NICBES~1\AppData\Local\Temp\ccg5l1il.o
+ .bss           0x00000000        0x0 C:\Users\NICBES~1\AppData\Local\Temp\ccg5l1il.o
+ .reginfo       0x00000000       0x18 C:\Users\NICBES~1\AppData\Local\Temp\ccg5l1il.o
+ .text          0x00000000        0x0 C:\Users\NICBES~1\AppData\Local\Temp\ccshyY8k.o
+ .data          0x00000000        0x0 C:\Users\NICBES~1\AppData\Local\Temp\ccshyY8k.o
+ .bss           0x00000000        0x0 C:\Users\NICBES~1\AppData\Local\Temp\ccshyY8k.o
+ .reginfo       0x00000000       0x18 C:\Users\NICBES~1\AppData\Local\Temp\ccshyY8k.o
+ .text          0x00000000        0x0 C:\Users\NICBES~1\AppData\Local\Temp\ccTWbktw.o
+ .data          0x00000000        0x0 C:\Users\NICBES~1\AppData\Local\Temp\ccTWbktw.o
+ .bss           0x00000000        0x0 C:\Users\NICBES~1\AppData\Local\Temp\ccTWbktw.o
+ .reginfo       0x00000000       0x18 C:\Users\NICBES~1\AppData\Local\Temp\ccTWbktw.o
+ .discard       0x00000000       0xd0 C:\Users\NICBES~1\AppData\Local\Temp\ccTWbktw.o
  .data          0x00000000        0x0 c:/program files/microchip/xc32/v2.50/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib\pic32_software_reset.o
  .bss           0x00000000        0x0 c:/program files/microchip/xc32/v2.50/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib\pic32_software_reset.o
  .reginfo       0x00000000       0x18 c:/program files/microchip/xc32/v2.50/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib\pic32_software_reset.o
@@ -1272,9 +1272,9 @@ LOAD build/default/production/_ext/1140991836/sys_int_pic32.o
 LOAD ..\..\..\..\..\..\..\bin\framework\peripheral\PIC32MX795F512L_peripherals.a
                 0x00000001                __MPLAB_BUILD = 0x1
                 0x00000000                _min_heap_size = 0x0
-LOAD C:\Users\NICBES~1\AppData\Local\Temp\ccIC1yQ9.o
-LOAD C:\Users\NICBES~1\AppData\Local\Temp\cc5ybIK4.o
-LOAD C:\Users\NICBES~1\AppData\Local\Temp\ccTS2xY7.o
+LOAD C:\Users\NICBES~1\AppData\Local\Temp\ccg5l1il.o
+LOAD C:\Users\NICBES~1\AppData\Local\Temp\ccshyY8k.o
+LOAD C:\Users\NICBES~1\AppData\Local\Temp\ccTWbktw.o
 LOAD c:/program files/microchip/xc32/v2.50/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib\pic32_software_reset.o
                 0x00000400                PROVIDE (_min_stack_size, 0x400)
 START GROUP
@@ -1323,16 +1323,16 @@ END GROUP
 
 .reset          0xbfc00000      0x19c
  *(.reset)
- .reset         0xbfc00000        0x8 C:\Users\NICBES~1\AppData\Local\Temp\ccIC1yQ9.o
+ .reset         0xbfc00000        0x8 C:\Users\NICBES~1\AppData\Local\Temp\ccg5l1il.o
                 0xbfc00000                _reset
  *(.reset.startup)
  .reset.startup
-                0xbfc00008      0x194 C:\Users\NICBES~1\AppData\Local\Temp\ccIC1yQ9.o
+                0xbfc00008      0x194 C:\Users\NICBES~1\AppData\Local\Temp\ccg5l1il.o
                 0xbfc00008                _startup
 
 .bev_excpt      0xbfc00380       0x10
  *(.bev_handler)
- .bev_handler   0xbfc00380       0x10 C:\Users\NICBES~1\AppData\Local\Temp\ccIC1yQ9.o
+ .bev_handler   0xbfc00380       0x10 C:\Users\NICBES~1\AppData\Local\Temp\ccg5l1il.o
 
 .dbg_excpt      0xbfc00480        0x0
                 0xbfc00480                . = (. + DEFINED (_DEBUGGER)?0x8:0x0)
@@ -1342,7 +1342,7 @@ END GROUP
 
 .app_excpt      0x9fc01180       0x10
  *(.gen_handler)
- .gen_handler   0x9fc01180       0x10 C:\Users\NICBES~1\AppData\Local\Temp\ccIC1yQ9.o
+ .gen_handler   0x9fc01180       0x10 C:\Users\NICBES~1\AppData\Local\Temp\ccg5l1il.o
 
 .vector_0       0x9fc01200        0x8
  *(.vector_0)
@@ -2697,16 +2697,16 @@ LOAD data_init
                 0x9d003e30                lcd_read_byte
 
 .text.DRV_USART0_Initialize
-                0x9d003fa4      0x170
+                0x9d003fa4      0x16c
  .text.DRV_USART0_Initialize
-                0x9d003fa4      0x170 build/default/production/_ext/327000265/drv_usart_static.o
+                0x9d003fa4      0x16c build/default/production/_ext/327000265/drv_usart_static.o
                 0x9d003fa4                DRV_USART0_Initialize
 
 .text.GPWM_GetSettings
-                0x9d004114      0x16c
+                0x9d004110      0x16c
  .text.GPWM_GetSettings
-                0x9d004114      0x16c build/default/production/_ext/1360937237/gestPWM.o
-                0x9d004114                GPWM_GetSettings
+                0x9d004110      0x16c build/default/production/_ext/1360937237/gestPWM.o
+                0x9d004110                GPWM_GetSettings
 
 .rodata         0x9d004280      0x160
  .rodata        0x9d004280      0x160 c:/program files/microchip/xc32/v2.50/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib\libc.a(ldpowers.o)
@@ -2960,7 +2960,7 @@ LOAD data_init
 .text.main_entry
                 0x9d006374       0x54
  .text.main_entry
-                0x9d006374       0x54 C:\Users\NICBES~1\AppData\Local\Temp\ccIC1yQ9.o
+                0x9d006374       0x54 C:\Users\NICBES~1\AppData\Local\Temp\ccg5l1il.o
                 0x9d0063a8                __crt0_exit
 
 .text.vsprintf  0x9d0063c8       0x54
