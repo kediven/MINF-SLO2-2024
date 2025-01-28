@@ -20,9 +20,9 @@
 
 // --------------- Inclusions supplémentaires ---------------
 // (Écran LCD, ADC, etc.)
-#include "Mc32DriverLcd.h"       // Pilote pour écran LCD
-#include "Mc32DriverAdc.h"       // Pilote pour ADC
-#include "gestPWM.h"            // gestion des pwm
+#include "Mc32DriverLcd.h"          // Pilote pour écran LCD
+#include "Mc32DriverAdc.h"          // Pilote pour ADC
+#include "gestPWM.h"                // gestion des pwm
 #include "peripheral/oc/plib_oc.h"  // Pilote pour Output Compare
 
 S_pwmSettings PWMData;  // pour les settings
@@ -126,6 +126,7 @@ void GPWM_GetSettings(S_pwmSettings *pData)
     // Conversion des données ADC du canal 2 en un angle absolu
     angle = (avgAdc2 * ADC2_ANGLE_MAX) / ADC2_MAX; // Échelle la valeur entre 0 et 180
     pData->absAngle = angle; // Met à jour l'angle absolu (0 à 180 degrés)
+    pData->AngleSetting = angle-90;
 }
 
 /**
@@ -141,11 +142,11 @@ void GPWM_GetSettings(S_pwmSettings *pData)
  *          - Ligne 3 : Vitesse absolue (absSpeed).
  *          - Ligne 4 : Angle ajusté (absAngle).
  */
-void GPWM_DispSettings(S_pwmSettings *pData)
+void GPWM_DispSettings(S_pwmSettings *pData, int remote)
 {
     // Ligne 1 : Message statique
     lcd_gotoxy(1, 1); // Positionne le curseur en haut à gauche
-    printf_lcd("TP1 PWM 2024-25"); // Affiche le message statique
+    printf_lcd("TP2 PWM et RS232 2024-25"); // Affiche le message statique
 
     // Ligne 2 : Vitesse signée (SpeedSetting)
     lcd_gotoxy(1, 2); // Place le curseur pour le texte statique

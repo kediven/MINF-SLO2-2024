@@ -90,6 +90,7 @@ SUBSTITUTE GOODS, TECHNOLOGY, SERVICES, OR ANY CLAIMS BY THIRD PARTIES
 
 APP_DATA appData;
 S_pwmSettings pData;
+S_pwmSettings PWMDataToSend; 
 
 // *****************************************************************************
 // *****************************************************************************
@@ -214,9 +215,14 @@ void APP_Initialize ( void )
 
 void APP_Tasks ( void )
 {
+
+
+
     /* Check the application's current state. */
     switch ( appData.state )
     {
+
+
         /* État initial de l'application */
         case APP_STATE_INIT:
         {
@@ -238,13 +244,13 @@ void APP_Tasks ( void )
                 lcd_gotoxy(1, 1); 
         
                 // Affiche un texte d'introduction sur la première ligne
-                printf_lcd("TP1 PWM 2024-25"); 
+                printf_lcd("TP2 PWM_UART 2024-25"); 
         
                 // Positionne le curseur à la deuxième ligne
                 lcd_gotoxy(1, 2); 
         
                 // Affiche le nom de l'auteur 1 sur la deuxième ligne
-                printf_lcd("Leo Mendes"); 
+                printf_lcd("Besson Nicolas"); 
         
                 // Positionne le curseur à la troisième ligne
                 lcd_gotoxy(1, 3); 
@@ -273,8 +279,49 @@ void APP_Tasks ( void )
         /* État execution de l'application */
         case APP_STATE_SERVICE_TASKS :
         {
-            // Passage de l'état de la achine en attente
-            APP_UpdateState(APP_STATE_WAIT);
+            // Initialisation des variables
+            static uint8_t CommStatus = 0; // Indique la source des paramètres (0 = local, 1 = distant)
+            static uint8_t Iter = 0;  // Compteur pour gérer l'envoi périodique des données
+
+            // Vérifie si des paramètres ont été reçus via une communication distante
+            CommStatus = GetMessage(&pData);
+
+            // Lecture des paramètres en fonction de la source
+            if (CommStatus == 0) // Pas de message reçu, communication locale
+            {
+                GPWM_GetSettings(&pData); // Obtient les paramètres locaux
+            }
+            else // Message reçu, communication distante
+            {
+                GPWM_GetSettings(&PWMDataToSend); // Obtient les paramètres distants
+            }
+
+            // Affiche les paramètres PWM (locaux ou distants) avec leur source
+            GPWM_DispSettings(&pData, CommStatus);
+
+            // Applique les paramètres pour contrôler le moteur via la PWM
+            GPWM_ExecPWM(&pData);
+
+            // Envoi périodique des paramètres (toutes les 5 itérations)
+            if (Iter >= TEMP_ITERATION) // Vérifie si le compteur atteint 5 cycles
+            {
+                if (CommStatus == 0) // Communication locale
+                {
+                    SendMessage(&pData); // Envoie les paramètres locaux
+                }
+                else // Communication distante
+                {
+                    SendMessage(&PWMDataToSend); // Envoie les paramètres distants
+                }
+                Iter = 0; // Réinitialise le compteur d'envoi
+            }
+            else
+            {
+                Iter++; // Incrémente le compteur d'envoi
+            }
+
+            // Met l'application dans l'état d'attente pour le prochain cycle
+            appData.state = APP_STATE_WAIT;
             break; 
         }
 

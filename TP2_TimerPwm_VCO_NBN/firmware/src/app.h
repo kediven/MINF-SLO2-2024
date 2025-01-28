@@ -65,6 +65,9 @@ extern "C" {
 // Section: Type Definitions
 // *****************************************************************************
 // *****************************************************************************
+
+#define TEMP_ITERATION 5
+
 // Masques pour les LEDs
 #define LEDS_PORTA_MASK  0b1000011111110011 // RA0-RA7 et RA15
 #define LEDS_PORTB_MASK  0b0000010000000000 // RB10

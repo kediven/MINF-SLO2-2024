@@ -50,6 +50,7 @@ typedef struct {
     uint8_t absSpeed;    // Vitesse absolue (0 à 99)
     uint8_t absAngle;    // Angle absolu (0 à 180)
     int8_t SpeedSetting; // Consigne de vitesse (-99 à +99)
+    int8_t AngleSetting; // Consigne de vitesse (-99 à +99)
 } S_pwmSettings;
 
 /*--------------------------------------------------------*/
@@ -72,7 +73,7 @@ void GPWM_GetSettings(S_pwmSettings *pData);
  * @brief Affiche les paramètres PWM (vitesse et angle) sur un écran LCD.
  * @param pData Pointeur vers la structure S_pwmSettings à afficher.
  */
-void GPWM_DispSettings(S_pwmSettings *pData);
+void GPWM_DispSettings(S_pwmSettings *pData, int remote);
 
 /**
  * @brief Exécute la PWM pour le contrôle du moteur en fonction des consignes.
