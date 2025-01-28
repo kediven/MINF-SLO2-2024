@@ -144,14 +144,19 @@ void GPWM_GetSettings(S_pwmSettings *pData)
  */
 void GPWM_DispSettings(S_pwmSettings *pData, int remote)
 {
-    // Ligne 1 : Message statique
-    lcd_gotoxy(1, 1); // Positionne le curseur en haut à gauche
-    printf_lcd("TP2 PWM et RS232 2024-25"); // Affiche le message statique
 
-    // Ligne 2 : Vitesse signée (SpeedSetting)
+    lcd_gotoxy(1, 1);
+    // Affiche si les paramètres sont locaux ou distants
+    if (remote == 1) 
+    {
+        printf_lcd("Remote Settings");
+    } 
+    else 
+    {
+        printf_lcd("Local Settings");
+    }
     lcd_gotoxy(1, 2); // Place le curseur pour le texte statique
     printf_lcd("Speed:"); // Affiche l'étiquette "Speed"
-
     lcd_gotoxy(11, 2); // Place la valeur à la colonne 11
     if (pData->SpeedSetting == 0)
     {
@@ -191,7 +196,7 @@ void GPWM_DispSettings(S_pwmSettings *pData, int remote)
     printf_lcd("Angle:"); // Affiche l'étiquette "Angle"
 
     lcd_gotoxy(11, 4); // Place la valeur à la colonne 11
-    printf_lcd("%3d", pData->absAngle - 90); // Affiche l'angle ajusté (-90 à +90) sur 3 caractères
+    printf_lcd("%3d", pData->AngleSetting); // Affiche l'angle ajusté (-90 à +90) sur 3 caractères
 }
 
 /**

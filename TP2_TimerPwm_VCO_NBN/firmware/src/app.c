@@ -67,6 +67,7 @@ SUBSTITUTE GOODS, TECHNOLOGY, SERVICES, OR ANY CLAIMS BY THIRD PARTIES
 #include "Mc32DriverAdc.h"       // Pilote pour ADC
 #include "peripheral/ports/plib_ports.h" //Gestion des ports
 #include "gestPWM.h"            // gestion des pwm
+#include "Mc32gest_RS232.h"
 // *****************************************************************************
 // *****************************************************************************
 // Section: Global Data Definitions
@@ -215,124 +216,106 @@ void APP_Initialize ( void )
 
 void APP_Tasks ( void )
 {
-
-
-
     /* Check the application's current state. */
     switch ( appData.state )
     {
-
-
-        /* État initial de l'application */
+        /* Initial application state */
         case APP_STATE_INIT:
         {
-            // Variable statique utilisée pour s'assurer que cette section ne s'exécute qu'une seule fois
-            static uint8_t firstInit = 1; 
-    
+            static uint8_t firstInit = 1; // Ensure one-time initialization
             if (firstInit == 1)
             {
-                // Mise à jour de la variable pour empêcher la réinitialisation lors des prochains appels
-                firstInit = 0; 
-                
-                // Initialisation de l'écran LCD
+                firstInit = 0; // Prevent reinitialization
+
+                // Initialize LCD and display introduction
                 lcd_init(); 
-        
-                // Allume le rétroéclairage de l'écran LCD
                 lcd_bl_on(); 
-        
-                // Positionne le curseur à la première ligne du LCD
                 lcd_gotoxy(1, 1); 
-        
-                // Affiche un texte d'introduction sur la première ligne
-                printf_lcd("TP2 PWM_UART 2024-25"); 
-        
-                // Positionne le curseur à la deuxième ligne
+                printf_lcd("Local Setting"); 
                 lcd_gotoxy(1, 2); 
-        
-                // Affiche le nom de l'auteur 1 sur la deuxième ligne
-                printf_lcd("Besson Nicolas"); 
-        
-                // Positionne le curseur à la troisième ligne
+                printf_lcd("TP2 PWM%UART 2025"); 
                 lcd_gotoxy(1, 3); 
-        
-                // Affiche le nom de l'auteur 2 sur la troisième ligne
+                printf_lcd("Besson Nicolas"); 
+                lcd_gotoxy(1, 4); 
                 printf_lcd("Vitor Coelho");           
-        
-                // Initialisation du PWM avec des données passées par pointeur
+
+                // Initialize PWM settings
                 GPWM_Initialize(&pData); 
 
-                // Initialisation des ADC (convertisseurs analogiques-numériques)
+                // Initialize ADC
                 BSP_InitADC10(); 
-                
+                DRV_USART0_Initialize();
+                InitFifoComm();
+
+                // Turn off all LEDs initially
                 TurnOffAllLEDs();
             }
-        break; 
+            break; 
         }
-        /* État attente de l'application */
-        case APP_STATE_WAIT :
+
+        /* Waiting state */
+        case APP_STATE_WAIT:
         {
-            
-            
+            // Transition logic or placeholder
             break;
         }
-        
-        /* État execution de l'application */
-        case APP_STATE_SERVICE_TASKS :
-        {
-            // Initialisation des variables
-            static uint8_t CommStatus = 0; // Indique la source des paramètres (0 = local, 1 = distant)
-            static uint8_t Iter = 0;  // Compteur pour gérer l'envoi périodique des données
 
-            // Vérifie si des paramètres ont été reçus via une communication distante
+        /* Service tasks state */
+        case APP_STATE_SERVICE_TASKS:
+        {
+            static uint8_t CommStatus = 0;
+            static int8_t inter = 0;
+
+            // Receive communication parameters
             CommStatus = GetMessage(&pData);
 
-            // Lecture des paramètres en fonction de la source
-            if (CommStatus == 0) // Pas de message reçu, communication locale
+            if (CommStatus == 0) // Local mode
             {
-                GPWM_GetSettings(&pData); // Obtient les paramètres locaux
-            }
-            else // Message reçu, communication distante
+                GPWM_GetSettings(&pData); // Retrieve local settings
+            } 
+            else // Remote mode
             {
-                GPWM_GetSettings(&PWMDataToSend); // Obtient les paramètres distants
+                GPWM_GetSettings(&PWMDataToSend); // Retrieve remote settings
             }
 
-            // Affiche les paramètres PWM (locaux ou distants) avec leur source
+            // Display parameters on LCD
             GPWM_DispSettings(&pData, CommStatus);
 
-            // Applique les paramètres pour contrôler le moteur via la PWM
+            // Execute PWM and motor control based on retrieved settings
             GPWM_ExecPWM(&pData);
 
-            // Envoi périodique des paramètres (toutes les 5 itérations)
-            if (Iter >= TEMP_ITERATION) // Vérifie si le compteur atteint 5 cycles
+            if (inter == 5) 
             {
-                if (CommStatus == 0) // Communication locale
+                // Send data via RS232
+                if (CommStatus == 0) 
                 {
-                    SendMessage(&pData); // Envoie les paramètres locaux
-                }
-                else // Communication distante
+                    SendMessage(&pData); // Send local settings
+                } 
+                else 
                 {
-                    SendMessage(&PWMDataToSend); // Envoie les paramètres distants
+                    SendMessage(&PWMDataToSend); // Send remote settings
                 }
-                Iter = 0; // Réinitialise le compteur d'envoi
-            }
-            else
+                inter = 0;
+            } 
+            else 
             {
-                Iter++; // Incrémente le compteur d'envoi
+                inter++;
             }
 
-            // Met l'application dans l'état d'attente pour le prochain cycle
+            // Transition back to wait state
             appData.state = APP_STATE_WAIT;
             break; 
         }
 
-        /* The default state should never be executed. */
+        /* Default state - should never be executed */
         default:
         {
-            /* Gestion d'erreur de la machine d'état */
+            /* Error handling for invalid state */
             break;
         }
     }
 }
+
 
 /**
  * @brief Met à jour l'état actuel de l'application.

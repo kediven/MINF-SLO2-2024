@@ -245,7 +245,7 @@ build/default/production/_ext/1360937237/app.o: ../src/app.c ../src/app.h \
  ../../../../../../../framework/system/ports/sys_ports.h \
  ../../../../../../../framework/system/ports/sys_ports_definitions.h \
  ../src/app.h ../../../../../../../bsp/pic32mx_skes/Mc32DriverLcd.h \
- ../src/gestPWM.h
+ ../src/gestPWM.h ../src/Mc32gest_RS232.h ../src/GesFifoTh32.h
 
 ../src/app.h:
 
@@ -744,3 +744,7 @@ build/default/production/_ext/1360937237/app.o: ../src/app.c ../src/app.h \
 ../../../../../../../bsp/pic32mx_skes/Mc32DriverLcd.h:
 
 ../src/gestPWM.h:
+
+../src/Mc32gest_RS232.h:
+
+../src/GesFifoTh32.h:

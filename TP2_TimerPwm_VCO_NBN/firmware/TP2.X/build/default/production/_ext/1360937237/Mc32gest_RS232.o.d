@@ -245,8 +245,8 @@ build/default/production/_ext/1360937237/Mc32gest_RS232.o: \
  ../../../../../../../framework/system/ports/sys_ports.h \
  ../../../../../../../framework/system/ports/sys_ports_definitions.h \
  ../src/app.h ../../../../../../../bsp/pic32mx_skes/Mc32DriverAdc.h \
- ../src/app.h ../src/GesFifoTh32.h ../src/Mc32gest_RS232.h \
- ../src/gestPWM.h ../src/Mc32CalCrc16.h
+ ../src/GesFifoTh32.h ../src/Mc32gest_RS232.h ../src/gestPWM.h \
+ ../src/app.h ../src/Mc32CalCrc16.h
 
 ../src/system_config/default/system_definitions.h:
 
@@ -740,12 +740,12 @@ build/default/production/_ext/1360937237/Mc32gest_RS232.o: \
 
 ../../../../../../../bsp/pic32mx_skes/Mc32DriverAdc.h:
 
-../src/app.h:
-
 ../src/GesFifoTh32.h:
 
 ../src/Mc32gest_RS232.h:
 
 ../src/gestPWM.h:
+
+../src/app.h:
 
 ../src/Mc32CalCrc16.h:
