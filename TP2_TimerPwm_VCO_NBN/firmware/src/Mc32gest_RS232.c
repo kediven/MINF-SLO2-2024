@@ -7,7 +7,6 @@
  *
  * Auteur  : CHR / SCA 
  * Année   : 2017-2018 (Mise à jour des commentaires : 2023)
- * Eleve   : NEG / Année 2025
  *****************************************************************************/
 
 #include <xc.h>
