@@ -207,114 +207,117 @@ void APP_Initialize ( void )
 
 
 /******************************************************************************
-  Function:
+  Fonction:
     void APP_Tasks ( void )
 
-  Remarks:
-    See prototype in app.h.
+  Remarque:
+    Voir le prototype dans app.h.
  */
 
 void APP_Tasks ( void )
 {
-    /* Check the application's current state. */
+    /* Vérifie l'état actuel de l'application. */
     switch ( appData.state )
     {
-        /* Initial application state */
+        /* État initial de l'application */
         case APP_STATE_INIT:
         {
-            static uint8_t firstInit = 1; // Ensure one-time initialization
+            static uint8_t firstInit = 1; // Assure une initialisation unique
             if (firstInit == 1)
             {
-                firstInit = 0; // Prevent reinitialization
+                firstInit = 0; // Empêche la réinitialisation multiple
 
-                // Initialize LCD and display introduction
+                // Initialisation de l'affichage LCD et affichage du texte d'introduction
                 lcd_init(); 
-                lcd_bl_on(); 
+                lcd_bl_on(); // Active le rétroéclairage de l'écran
                 lcd_gotoxy(1, 1); 
-                printf_lcd("Local Setting"); 
+                printf_lcd("Local Setting"); // Affichage du titre
                 lcd_gotoxy(1, 2); 
-                printf_lcd("TP2 PWM%UART 2025"); 
+                printf_lcd("TP2 PWM%UART 2025"); // Informations sur le projet
                 lcd_gotoxy(1, 3); 
-                printf_lcd("Besson Nicolas"); 
+                printf_lcd("Besson Nicolas"); // Nom de l'auteur
                 lcd_gotoxy(1, 4); 
-                printf_lcd("Vitor Coelho");           
+                printf_lcd("Vitor Coelho"); // Nom du second auteur           
 
-                // Initialize PWM settings
+                // Initialisation des paramètres PWM
                 GPWM_Initialize(&pData); 
 
-                // Initialize ADC
+                // Initialisation du module ADC
                 BSP_InitADC10(); 
+
+                // Initialisation du module UART pour la communication série
                 DRV_USART0_Initialize();
                 InitFifoComm();
 
-                // Turn off all LEDs initially
+                // Éteint tous les LED au démarrage
                 TurnOffAllLEDs();
             }
             break; 
         }
 
-        /* Waiting state */
+        /* État d'attente */
         case APP_STATE_WAIT:
         {
-            // Transition logic or placeholder
+            // État intermédiaire, en attente d'événements ou d'instructions
             break;
         }
 
-        /* Service tasks state */
+        /* État d'exécution des tâches */
         case APP_STATE_SERVICE_TASKS:
         {
-            static uint8_t CommStatus = 0;
-            static int8_t inter = 0;
+            static uint8_t CommStatus = 0; // Indique le mode de communication (local ou distant)
+            static int8_t inter = 0; // Compteur d'itérations
 
-            // Receive communication parameters
+            // Récupération des paramètres de communication
             CommStatus = GetMessage(&pData);
 
-            if (CommStatus == 0) // Local mode
+            if (CommStatus == 0) // Mode local
             {
-                GPWM_GetSettings(&pData); // Retrieve local settings
+                GPWM_GetSettings(&pData); // Récupère les paramètres locaux
             } 
-            else // Remote mode
+            else // Mode distant
             {
-                GPWM_GetSettings(&PWMDataToSend); // Retrieve remote settings
+                GPWM_GetSettings(&PWMDataToSend); // Récupère les paramètres pour transmission
             }
 
-            // Display parameters on LCD
+            // Affichage des paramètres sur l'écran LCD
             GPWM_DispSettings(&pData, CommStatus);
 
-            // Execute PWM and motor control based on retrieved settings
+            // Exécution du contrôle PWM et du moteur en fonction des paramètres récupérés
             GPWM_ExecPWM(&pData);
 
-            if (inter == 5) 
+            if (inter == 5) // Envoie des données toutes les 5 itérations
             {
-                // Send data via RS232
+                // Transmission des données via RS232
                 if (CommStatus == 0) 
                 {
-                    SendMessage(&pData); // Send local settings
+                    SendMessage(&pData); // Envoi des paramètres locaux
                 } 
                 else 
                 {
-                    SendMessage(&PWMDataToSend); // Send remote settings
+                    SendMessage(&PWMDataToSend); // Envoi des paramètres distants
                 }
-                inter = 0;
+                inter = 0; // Réinitialisation du compteur
             } 
             else 
             {
-                inter++;
+                inter++; // Incrémentation du compteur
             }
 
-            // Transition back to wait state
+            // Retour à l'état d'attente après traitement des tâches
             appData.state = APP_STATE_WAIT;
             break; 
         }
 
-        /* Default state - should never be executed */
+        /* État par défaut - ne devrait jamais être exécuté */
         default:
         {
-            /* Error handling for invalid state */
+            /* Gestion d'erreur en cas d'état invalide */
             break;
         }
     }
 }
+
 
 
 /**

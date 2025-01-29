@@ -1,10 +1,11 @@
 /******************************************************************************
  * Fichier : Mc32Gest_RS232.h
- * Objet   : Déclarations pour la gestion RS232 (FIFO, fonctions d'envoi/réception)
+ * Objet   : Déclarations pour la gestion de la communication RS232 
+ *           (gestion FIFO, fonctions d'envoi et de réception).
  *
  * Auteur  : CHR
  * Version : V1.3
- * Note    : Compatible XC32 + Harmony
+ * Note    : Compatible avec XC32 et Harmony.
  *****************************************************************************/
 
 #ifndef MC32GEST_RS232_H
@@ -14,62 +15,72 @@
 #include "GesFifoTh32.h"
 #include "gestPWM.h"
 
-/*----------------------------------------------------------------------------*/
-/*                        Constantes et macros                                */
-/*----------------------------------------------------------------------------*/
-#define MESS_SIZE    5       /**< Taille d'un message complet (en octets).           */
-#define STX_code    (-86)    /**< Code de départ (STX), -86 correspond à 0xAA en hex. */
+//--------------------------  Constantes et macros  --------------------------//
 
-#define FIFO_RX_SIZE ((4 * MESS_SIZE) + 1)   /**< Taille FIFO RX (4 messages + 1).  */
-#define FIFO_TX_SIZE ((4 * MESS_SIZE) + 1)   /**< Taille FIFO TX (4 messages + 1).  */
+#define MESS_SIZE    5       // Taille d'un message complet en octets.
+#define STX_code    (-86)    // Code de synchronisation (STX), -86 correspond à 0xAA en hexadécimal.
 
-#define COMM_TIMEOUT_CYCLES    10       /**< taille d'un cycle. */
+#define FIFO_RX_SIZE ((4 * MESS_SIZE) + 1)   // Taille du buffer FIFO RX (capacité de 4 messages + 1 octet de sécurité).
+#define FIFO_TX_SIZE ((4 * MESS_SIZE) + 1)   // Taille du buffer FIFO TX (capacité de 4 messages + 1 octet de sécurité).
 
-#define RX_FIFO_START_THRESHOLD   (2 * MESS_SIZE)
-#define RX_FIFO_STOP_THRESHOLD    6
+#define COMM_TIMEOUT_ITERATION    10       // Nombre de d'iteration avant expiration du timeout de communication.
 
-/*----------------------------------------------------------------------------*/
-/*                      Structures de données                                 */
-/*----------------------------------------------------------------------------*/
+#define RX_FIFO_START_THRESHOLD   (2 * MESS_SIZE)  // Seuil de remplissage du FIFO RX pour débuter le traitement des messages.
+#define RX_FIFO_STOP_THRESHOLD    6               // Seuil de remplissage du FIFO RX pour stopper temporairement la réception.
+
+//--------------------------  Structures de données  --------------------------//
 /**
- * @brief Structure représentant le format d'un message échangé.
- *        - Start  : octet de synchronisation (STX_code)
- *        - Speed  : consigne de vitesse
- *        - Angle  : consigne d'angle
- *        - MsbCrc : octet de poids fort du CRC
- *        - LsbCrc : octet de poids faible du CRC
+ * @brief Structure représentant le format d'un message transmis via RS232.
+ *
+ * - Start  : Octet de synchronisation (STX_code).
+ * - Speed  : Valeur de consigne de vitesse.
+ * - Angle  : Valeur de consigne d'angle.
+ * - MsbCrc : Octet de poids fort du code de contrôle CRC.
+ * - LsbCrc : Octet de poids faible du code de contrôle CRC.
  */
 typedef struct {
-    uint8_t Start;
-    int8_t  Speed;
-    int8_t  Angle;
-    uint8_t MsbCrc;
-    uint8_t LsbCrc;
+    uint8_t Start;  // Code de départ pour synchroniser la réception.
+    int8_t  Speed;  // Valeur de consigne de la vitesse.
+    int8_t  Angle;  // Valeur de consigne de l'angle.
+    uint8_t MsbCrc; // Octet de poids fort du CRC pour vérifier l'intégrité des données.
+    uint8_t LsbCrc; // Octet de poids faible du CRC.
 } StruMess;
 
 /**
- * @brief Union pour gérer une valeur 16 bits (uint16_t)
- *        en accédant séparément à l'octet faible (lsb) et fort (msb).
+ * @brief Union permettant d'accéder à une valeur 16 bits (uint16_t)
+ *        soit globalement, soit séparément via ses octets de poids faible et fort.
  */
 typedef union {
-    uint16_t val;
+    uint16_t val;   // Valeur 16 bits entière.
     struct {
-        uint8_t lsb;
-        uint8_t msb;
+        uint8_t lsb; // Octet de poids faible (Least Significant Byte).
+        uint8_t msb; // Octet de poids fort (Most Significant Byte).
     } shl;
 } U_manip16;
 
-/*----------------------------------------------------------------------------*/
-/*                Prototypes des fonctions                                    */
-/*----------------------------------------------------------------------------*/
+//--------------------------  Prototypes des fonctions  --------------------------//
+/**
+ * @brief Initialise les files FIFO pour la communication RS232.
+ */
 void InitFifoComm(void);
-int  GetMessage(S_pwmSettings *pData);
+
+/**
+ * @brief Récupère un message de la file FIFO RX et met à jour les paramètres PWM.
+ *
+ * @param[in,out] pData Pointeur vers la structure contenant les paramètres PWM.
+ * @return Renvoie 0 si en mode local, autre valeur si en mode distant.
+ */
+int GetMessage(S_pwmSettings *pData);
+
+/**
+ * @brief Envoie un message via la file FIFO TX.
+ *
+ * @param[in] pData Pointeur vers la structure contenant les paramètres PWM à envoyer.
+ */
 void SendMessage(S_pwmSettings *pData);
 
-/*----------------------------------------------------------------------------*/
-/*                Descripteurs externes (définis dans le .c)                  */
-/*----------------------------------------------------------------------------*/
-extern S_fifo descrFifoRX;
-extern S_fifo descrFifoTX;
+//--------------------------  Descripteurs externes  --------------------------//
+extern S_fifo descrFifoRX; // Descripteur du buffer FIFO de réception.
+extern S_fifo descrFifoTX; // Descripteur du buffer FIFO de transmission.
 
 #endif /* MC32GEST_RS232_H */
