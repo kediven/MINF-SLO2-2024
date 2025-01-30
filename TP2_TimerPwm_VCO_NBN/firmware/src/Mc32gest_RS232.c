@@ -217,88 +217,92 @@ void __ISR(_UART_1_VECTOR, ipl5AUTO) UART1_InterruptHandler(void) {
     LED3_W = 1;
 
     /* === Gestion des erreurs UART === */
+    // Vérifie si un drapeau d'erreur d'UART1 est levé
     if (PLIB_INT_SourceFlagGet(INT_ID_0, INT_SOURCE_USART_1_ERROR)) {
-        // Vérifie si un drapeau d'erreur d'UART1 est levé
-
-        PLIB_INT_SourceFlagClear(INT_ID_0, INT_SOURCE_USART_1_ERROR);
+        
         // Efface le flag d'erreur pour indiquer qu'il a été traité
-
+        PLIB_INT_SourceFlagClear(INT_ID_0, INT_SOURCE_USART_1_ERROR);
+        
+        // Vérifie s'il y a une erreur d'overflow (dépassement de buffer RX)
         if (PLIB_USART_ErrorsGet(USART_ID_1) & USART_ERROR_RECEIVER_OVERRUN) {
-            // Vérifie s'il y a une erreur d'overflow (dépassement de buffer RX)
-
-            PLIB_USART_ReceiverOverrunErrorClear(USART_ID_1);
+            
             // Efface l'erreur d'overflow pour permettre la réception de nouveaux octets
+            PLIB_USART_ReceiverOverrunErrorClear(USART_ID_1);
+            
         }
 
         // Vider le buffer RX matériel en cas de données résiduelles à cause d'une erreur
         while (PLIB_USART_ReceiverDataIsAvailable(USART_ID_1)) {
+             // Lire et ignorer les données dans le buffer pour le vider
             (void)PLIB_USART_ReceiverByteReceive(USART_ID_1);
-            // Lire et ignorer les données dans le buffer pour le vider
+            
         }
     }
 
     /* === Réception des données UART === */
+    // Vérifie si un drapeau d'interruption de réception est levé
     if (PLIB_INT_SourceFlagGet(INT_ID_0, INT_SOURCE_USART_1_RECEIVE)) {
-        // Vérifie si un drapeau d'interruption de réception est levé
-
+        
+        // Tant qu'il y a des données à lire dans le buffer RX de l'UART1
         while (PLIB_USART_ReceiverDataIsAvailable(USART_ID_1)) {
-            // Tant qu'il y a des données à lire dans le buffer RX de l'UART1
-
-            receivedByte = (int8_t)PLIB_USART_ReceiverByteReceive(USART_ID_1);
+            
             // Lire un octet de données du buffer matériel RX
-
-            PutCharInFifo(&descrFifoRX, receivedByte);
+            receivedByte = (int8_t)PLIB_USART_ReceiverByteReceive(USART_ID_1);
+            
             // Placer l'octet reçu dans le FIFO RX logiciel
+            PutCharInFifo(&descrFifoRX, receivedByte);
+            
         }
-
-        LED4_W = !LED4_R;
         // Inverse l'état de LED4 pour indiquer qu'une réception de données a eu lieu
-
+        LED4_W = !LED4_R;
+        
+        // Vérifie si l'espace disponible dans le FIFO RX est inférieur au seuil critique
         if (GetWriteSpace(&descrFifoRX) <= RX_FIFO_STOP_THRESHOLD) {
-            // Vérifie si l'espace disponible dans le FIFO RX est inférieur au seuil critique
-
-            RS232_RTS = 1;
+            
             // Active RTS (Request To Send) pour signaler à l'émetteur distant d'arrêter l'envoi
+            RS232_RTS = 1;
+            
         }
-
-        PLIB_INT_SourceFlagClear(INT_ID_0, INT_SOURCE_USART_1_RECEIVE);
         // Efface le flag d'interruption de réception pour indiquer qu'il a été traité
+        PLIB_INT_SourceFlagClear(INT_ID_0, INT_SOURCE_USART_1_RECEIVE);
+        
     }
 
     /* === Transmission des données UART === */
+    // Vérifie si un drapeau d'interruption de transmission est levé
     if (PLIB_INT_SourceFlagGet(INT_ID_0, INT_SOURCE_USART_1_TRANSMIT)) {
-        // Vérifie si un drapeau d'interruption de transmission est levé
-
+        
+        // Tant que CTS (Clear To Send) est bas, qu'il y a des données à envoyer
+        // dans le FIFO TX et que le buffer matériel TX de l'UART1 n'est pas plein
         while ((RS232_CTS == 0) && GetReadSize(&descrFifoTX) > 0 &&
             !PLIB_USART_TransmitterBufferIsFull(USART_ID_1)) {
-            // Tant que CTS (Clear To Send) est bas, qu'il y a des données à envoyer
-            // dans le FIFO TX et que le buffer matériel TX de l'UART1 n'est pas plein
 
-            GetCharFromFifo(&descrFifoTX, &receivedByte);
             // Récupère un octet du FIFO TX logiciel
-
-            PLIB_USART_TransmitterByteSend(USART_ID_1, (uint8_t)receivedByte);
+            GetCharFromFifo(&descrFifoTX, &receivedByte);
+            
             // Envoie l'octet via l'UART1
-
-            BSP_LEDToggle(BSP_LED_6);
+            PLIB_USART_TransmitterByteSend(USART_ID_1, (uint8_t)receivedByte);
+            
             // Toggle LED6 pour indiquer l'envoi d'un octet
+            BSP_LEDToggle(BSP_LED_6);
+            
         }
-
+        // Vérifie s'il n'y a plus de données à envoyer dans le FIFO TX
         if (GetReadSize(&descrFifoTX) == 0) {
-            // Vérifie s'il n'y a plus de données à envoyer dans le FIFO TX
-
-            PLIB_INT_SourceDisable(INT_ID_0, INT_SOURCE_USART_1_TRANSMIT);
+            
             // Désactive l'interruption de transmission pour économiser les ressources
+            PLIB_INT_SourceDisable(INT_ID_0, INT_SOURCE_USART_1_TRANSMIT);
+            
         }
-
-        PLIB_INT_SourceFlagClear(INT_ID_0, INT_SOURCE_USART_1_TRANSMIT);
         // Efface le flag d'interruption de transmission pour indiquer qu'il a été traité
-
-        LED5_W = !LED5_R;
+        PLIB_INT_SourceFlagClear(INT_ID_0, INT_SOURCE_USART_1_TRANSMIT);
+        
         // Inverse l'état de LED5 pour indiquer une activité de transmission
+        LED5_W = !LED5_R;
+        
     }
-
-    LED3_W = 0;
     // Rallume LED3 pour indiquer la fin de l'interruption
+    LED3_W = 0;
+    
 }
 
