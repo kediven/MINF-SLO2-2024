@@ -23,9 +23,7 @@
 StruMess TxMess;
 // Struct pour réception des messages
 StruMess RxMess;  
-/*----------------------------------------------------------------------------*/
-/*                  Descripteurs de FIFO (Réception et Émission)              */
-/*----------------------------------------------------------------------------*/
+/*                  Descripteurs de FIFO (RX et TX)                          */
 
 S_fifo descrFifoRX; /**< Descripteur du FIFO de réception (RX).            */
 S_fifo descrFifoTX; /**< Descripteur du FIFO d'émission (TX).             */
@@ -35,10 +33,7 @@ static int8_t fifoRX[FIFO_RX_SIZE];
 static int8_t fifoTX[FIFO_TX_SIZE];
 
 
-/*----------------------------------------------------------------------------*/
-/*                          Initialisation FIFO et RTS                         */
-/*----------------------------------------------------------------------------*/
-
+/*                          Initialisation FIFO et RTS                        */
 /**
  * @brief Initialise les deux FIFOs (RX et TX) et positionne la ligne RTS.
  *        - FIFO RX et FIFO TX sont alloués localement.
@@ -56,9 +51,8 @@ void InitFifoComm(void)
     RS232_RTS = 1;   // interdit émission par l'autre
 }
 
-/*----------------------------------------------------------------------------*/
-/*            Lecture d'un message complet depuis le FIFO de réception        */
-/*----------------------------------------------------------------------------*/
+
+/*            Lecture du message du FIFO de réception                         */
 
 /**
  * description Récupère et traite un message complet depuis le FIFO RX.
@@ -150,10 +144,8 @@ int GetMessage(S_pwmSettings* pData) {
 }
 
 
-/*----------------------------------------------------------------------------*/
-/*           Construction et mise en FIFO d?un message à envoyer (TX)         */
-/*----------------------------------------------------------------------------*/
 
+/*           Construction et mise en FIFO message à envoyer                   */
 /**
  * @brief Construit et envoie un message via le FIFO TX.
  *
@@ -204,6 +196,7 @@ void SendMessage(S_pwmSettings* pData) {
     }
 }
 
+/*          interruption UART                                                 */
 /**
  * @brief Gère les interruptions de l'UART1 (erreurs, réception et émission).
  *
@@ -227,8 +220,7 @@ void __ISR(_UART_1_VECTOR, ipl5AUTO) UART1_InterruptHandler(void) {
         if (PLIB_USART_ErrorsGet(USART_ID_1) & USART_ERROR_RECEIVER_OVERRUN) {
             
             // Efface l'erreur d'overflow pour permettre la réception de nouveaux octets
-            PLIB_USART_ReceiverOverrunErrorClear(USART_ID_1);
-            
+            PLIB_USART_ReceiverOverrunErrorClear(USART_ID_1);    
         }
 
         // Vider le buffer RX matériel en cas de données résiduelles à cause d'une erreur
